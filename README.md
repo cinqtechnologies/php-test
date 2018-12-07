@@ -11,6 +11,14 @@ The aim of this test is to evaluate the applicant skills on:
 
 ---
 
+## How to start and send us the test
+- Fork this repository
+- Create a branch with your name-surname as its name (e.i. john-doe)
+- Develop the test
+- Create a pull request to this repo on the master branch with your code.
+
+---
+
 ## Basic Guidelines
 For this test you are developing a small e-commerce app. The app must have just a list of products. The products must display the following:
 
