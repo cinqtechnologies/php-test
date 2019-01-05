@@ -12,7 +12,12 @@ use App\Product;
 use Illuminate\Http\Request;
 
 class ProductDataService{
-
+    
+    public static function getDetails($id)
+    {
+        return Product::with('retailer')->find($id);
+    }
+    
     public static function getList(Request $request, $retailer_id = null)
     {
         $products = Product::with('retailer')

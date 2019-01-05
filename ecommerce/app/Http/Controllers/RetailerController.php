@@ -41,14 +41,14 @@ class RetailerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $retailer_id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($retailer_id)
+    public function show($id)
     {
         return response()->json([
             'success' => true,
-            'retailer' =>RetailerDataService::getDetails($retailer_id)
+            'retailer' =>RetailerDataService::getDetails($id)
         ]);
     }
 
