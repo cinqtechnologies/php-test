@@ -12,6 +12,6 @@ class Product extends Model
 
     public function retailer()
     {
-        return $this->belongsTo('App\Product');
+        return $this->belongsTo('App\Retailer');
     }
 }
