@@ -10,7 +10,6 @@ namespace App\Http\Services\Product;
 
 use App\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProductDataService{
 
@@ -24,14 +23,6 @@ class ProductDataService{
             })
             ->orderBy('price')
             ->paginate(15);
-
-//        if ($products){
-//            $products->transform(function($product){
-//                $image = ! empty($product->image) ? $product->image : 'no-image.jpg';
-//                $product->image = Storage::url($image);
-//                return $product;
-//            });
-//        }
 
         return $products;
     }

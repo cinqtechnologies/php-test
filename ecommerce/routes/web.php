@@ -23,3 +23,4 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/products/{page?}/{retailer_id?}', 'ProductController@index');
+Route::get('/retailer/{retailer_id}', 'RetailerController@show');

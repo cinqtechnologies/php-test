@@ -100,7 +100,8 @@ var app = new Vue({
     showRetailerDetails: false,
     currentPage: 1,
     totalProducts: 0,
-    products: []
+    products: [],
+    retailer: null
   },
   mounted: function mounted() {
     this.getProducts().then(function () {
@@ -121,6 +122,16 @@ var app = new Vue({
       }).catch(function (error) {
         return console.log(error);
       });
+    },
+    productsByRetailer: function productsByRetailer(retailerId) {
+      var _this2 = this;
+
+      axios.get('/retailer/' + retailerId).then(function (res) {
+        _this2.retailer = res.data.retailer;
+      }).catch(function (error) {
+        return console.log(error);
+      });
+      this.getProducts(retailerId);
     }
   }
 });

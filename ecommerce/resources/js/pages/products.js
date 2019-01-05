@@ -5,7 +5,8 @@ const app = new Vue({
       showRetailerDetails: false,
       currentPage: 1,
       totalProducts: 0,
-      products: []
+      products: [],
+      retailer: null
    },
    mounted(){
       this.getProducts().then(() => {
@@ -25,6 +26,18 @@ const app = new Vue({
                this.pageLoading = false
             })
             .catch(error => console.log(error))
+      },
+
+      productsByRetailer(retailerId)
+      {
+         axios
+            .get('/retailer/'+retailerId)
+            .then(res => {
+               this.retailer = res.data.retailer
+            })
+            .catch(error => console.log(error))
+
+         this.getProducts(retailerId)
       }
    }
 });
