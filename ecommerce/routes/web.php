@@ -24,5 +24,6 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/products/{page?}/{retailer_id?}', 'ProductController@index');
 Route::get('/product/{id}', 'ProductController@show');
+Route::post('/product/{id}/send-details', 'ProductController@sendDetails');
 
 Route::get('/retailer/{id}', 'RetailerController@show');

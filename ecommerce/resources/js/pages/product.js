@@ -15,7 +15,12 @@ const app = new Vue({
          retailer: {
             name: ''
          },
-      }
+      },
+      form: {
+         email: ''
+      },
+      loading: false,
+      showSuccess: false
    },
 
    mounted(){
@@ -25,7 +30,23 @@ const app = new Vue({
    },
 
    methods: {
-      
+      sendEmail(){
+         this.loading = true
+
+         axios
+            .post('/product/'+this.product.id+'/send-details', { email: this.form.email })
+            .then(res => {
+               console.log(res)
+               if (res.data.success){
+                  this.form.email = ''
+                  this.showSuccess = true
+               }
+            })
+            .catch(error => console.log(error))
+            .then( () => {
+               this.loading = false
+            })
+      }
    }
 });
 

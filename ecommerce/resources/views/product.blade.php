@@ -31,15 +31,19 @@
 
                     <div v-text="product.description" class="mb-4"></div>
 
-                    <form class="mb-4">
-                        <h5>Get more details about this product:</h5>
+                    <form @submit.prevent="sendEmail" class="mb-4">
+                        <h5>Send the product details to your email:</h5>
+
+                        <div v-if="showSuccess" class="alert alert-success mt-2" role="alert">
+                            We've sent the product details do your email.
+                        </div>
 
                         <div class="form-group">
                             <label>Email address</label>
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" v-model="form.email" required>
                         </div>
 
-                        <button type="submit" class="btn btn-lg btn-primary">Send</button>
+                        <button type="submit" class="btn btn-lg btn-primary" :disabled="loading">Send</button>
                     </form>
                 </div>
             </div>

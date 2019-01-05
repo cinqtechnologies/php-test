@@ -109,14 +109,39 @@ var app = new Vue({
       retailer: {
         name: ''
       }
-    }
+    },
+    form: {
+      email: ''
+    },
+    loading: false,
+    showSuccess: false
   },
   mounted: function mounted() {
     this.product = Object.assign({}, this.product, window.__INITIAL_STATE);
     this.pageLoading = false;
     document.getElementById('main-content').style.display = null;
   },
-  methods: {}
+  methods: {
+    sendEmail: function sendEmail() {
+      var _this = this;
+
+      this.loading = true;
+      axios.post('/product/' + this.product.id + '/send-details', {
+        email: this.form.email
+      }).then(function (res) {
+        console.log(res);
+
+        if (res.data.success) {
+          _this.form.email = '';
+          _this.showSuccess = true;
+        }
+      }).catch(function (error) {
+        return console.log(error);
+      }).then(function () {
+        _this.loading = false;
+      });
+    }
+  }
 });
 
 /***/ }),

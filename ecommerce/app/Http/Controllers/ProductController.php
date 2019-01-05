@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\Product\ProductDataService;
+use App\Http\Services\EmailService;
 
 class ProductController extends Controller
 {
@@ -57,14 +58,19 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Send product details to the user email
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function sendDetails(Request $request, $id)
     {
-        //
+        $product = ProductDataService::getDetails($id);
+        $status = EmailService::sendProductDetails($request->input('email'), $product);
+        
+        return response()->json([
+            'success' => $status
+        ]);
     }
 
     /**
