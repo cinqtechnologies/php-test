@@ -37,7 +37,7 @@ class ProductsTableSeeder extends Seeder
         ]);
 
         DB::table('products')->insert([
-            'retailer_id' => 1,
+            'retailer_id' => 2,
             'name' => 'Product 4',
             'price' => 8.55,
             'image' => 'product4.jpg',
@@ -45,7 +45,7 @@ class ProductsTableSeeder extends Seeder
         ]);
 
         DB::table('products')->insert([
-            'retailer_id' => 1,
+            'retailer_id' => 2,
             'name' => 'Product 5',
             'price' => 20.60,
             'image' => 'product5.jpg',

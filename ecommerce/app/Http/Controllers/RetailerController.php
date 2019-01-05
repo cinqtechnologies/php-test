@@ -46,9 +46,10 @@ class RetailerController extends Controller
      */
     public function show($retailer_id)
     {
-        return response()->json(
-            RetailerDataService::getDetails($retailer_id)
-        );
+        return response()->json([
+            'success' => true,
+            'retailer' =>RetailerDataService::getDetails($retailer_id)
+        ]);
     }
 
     /**

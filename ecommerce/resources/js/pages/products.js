@@ -13,6 +13,13 @@ const app = new Vue({
          document.getElementById('main-content').style.display = null
       })
    },
+   
+   computed: {
+      labelProducts(){
+         return this.showRetailerDetails ? "Retailer's Products" : 'Products'
+      }
+   },
+   
    methods: {
       getProducts(retailerId = ''){
          this.pageLoading = true
@@ -34,10 +41,17 @@ const app = new Vue({
             .get('/retailer/'+retailerId)
             .then(res => {
                this.retailer = res.data.retailer
+               this.showRetailerDetails = true
             })
             .catch(error => console.log(error))
 
          this.getProducts(retailerId)
+      },
+
+      dismissRetailerFilter()
+      {
+         this.getProducts()
+         this.showRetailerDetails = false
       }
    }
 });

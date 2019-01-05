@@ -108,6 +108,11 @@ var app = new Vue({
       document.getElementById('main-content').style.display = null;
     });
   },
+  computed: {
+    labelProducts: function labelProducts() {
+      return this.showRetailerDetails ? "Retailer's Products" : 'Products';
+    }
+  },
   methods: {
     getProducts: function getProducts() {
       var _this = this;
@@ -128,10 +133,15 @@ var app = new Vue({
 
       axios.get('/retailer/' + retailerId).then(function (res) {
         _this2.retailer = res.data.retailer;
+        _this2.showRetailerDetails = true;
       }).catch(function (error) {
         return console.log(error);
       });
       this.getProducts(retailerId);
+    },
+    dismissRetailerFilter: function dismissRetailerFilter() {
+      this.getProducts();
+      this.showRetailerDetails = false;
     }
   }
 });

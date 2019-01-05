@@ -48,11 +48,16 @@
                             <div class="card text-white bg-info mb-4">
                                 <div class="card-header">Retailer Details</div>
                                 <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
+                                    <img :src="'/storage/'+retailer.logo" class="rounded float-left img-thumbnail mr-3 mb-3" alt="Logo">
+                                    <div>
+                                        <h4 class="card-title" v-text="retailer.name"></h4>
+                                        <p class="card-text" v-text="retailer.description"></p>
+                                        <div class="text-right">
+                                            <a @click.prevent="dismissRetailerFilter" href="#" class="btn btn-outline-light">Back</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +66,7 @@
                     <div class="row">
                         <div class="col-12">
 
-                            <p class="h2 my-4">Products</p>
+                            <p class="h2 my-4" v-text="labelProducts"></p>
 
                             <div v-if="totalProducts == 0" class="alert alert-warning" role="alert">
                                 No product found
