@@ -12,9 +12,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $page = 1, $retailer_id = null)
     {
-        $products = ProductDataService::getList($request);
+        $products = ProductDataService::getList($request, $retailer_id);
 
         return response()->json([
             'success' => true,

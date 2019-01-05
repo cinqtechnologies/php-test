@@ -52,8 +52,12 @@
                                     <div>
                                         <h4 class="card-title" v-text="retailer.name"></h4>
                                         <p class="card-text" v-text="retailer.description"></p>
-                                        <div class="text-right">
-                                            <a @click.prevent="dismissRetailerFilter" href="#" class="btn btn-outline-light">Back</a>
+
+                                        <div class="clearfix">
+                                            <div class="float-md-left">
+                                                <a :href="'http://'+retailer.website" class="btn btn-primary" target="_blank">Website</a>
+                                            </div>
+                                            <a @click.prevent="dismissRetailerFilter" href="#" class="float-md-right btn btn-lg btn-outline-light">Back</a>
                                         </div>
                                     </div>
 

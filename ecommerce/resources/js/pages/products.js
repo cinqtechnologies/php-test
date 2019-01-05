@@ -35,8 +35,7 @@ const app = new Vue({
             .catch(error => console.log(error))
       },
 
-      productsByRetailer(retailerId)
-      {
+      productsByRetailer(retailerId){
          axios
             .get('/retailer/'+retailerId)
             .then(res => {
@@ -48,8 +47,7 @@ const app = new Vue({
          this.getProducts(retailerId)
       },
 
-      dismissRetailerFilter()
-      {
+      dismissRetailerFilter(){
          this.getProducts()
          this.showRetailerDetails = false
       }

@@ -13,13 +13,11 @@ use Illuminate\Http\Request;
 
 class ProductDataService{
 
-    public static function getList(Request $request)
+    public static function getList(Request $request, $retailer_id = null)
     {
-        $retailer_id = $request->get('retailer_id', null);
-
         $products = Product::with('retailer')
             ->when(! empty($retailer_id), function($q) use ($retailer_id){
-                $q->where('retailer_id', $retailer_id);
+                $q->where('retailer_id', '=', $retailer_id);
             })
             ->orderBy('price')
             ->paginate(15);
