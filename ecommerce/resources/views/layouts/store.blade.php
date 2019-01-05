@@ -27,7 +27,7 @@
                 <a class="navbar-brand" href="#">{{ config('app.name', 'App') }}</a>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     @auth
-                    <a class="nav-item nav-link active" href="{{ url('/dashboard') }}">Home</a>
+                    <a class="nav-item nav-link active" href="{{ url('/dashboard') }}">Dashboard</a>
                     @else
                         <a  class="nav-item nav-link"href="{{ route('login') }}">Login</a>
 

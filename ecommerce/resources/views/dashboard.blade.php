@@ -14,7 +14,13 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <p>You are logged in!</p>
+
+                    <br>
+
+                    <a href="{{ route('retailer.create') }}" class="btn btn-primary mb-4">Add Retailer</a>
+                    <a href="{{ route('product.create') }}" class="btn btn-primary mb-4">Add Product</a>
+                    <a href="{{ route('home') }}" class="btn btn-outline-primary mb-4">Go back to the store</a>
                 </div>
             </div>
         </div>

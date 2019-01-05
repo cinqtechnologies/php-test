@@ -7,14 +7,9 @@ use App\Http\Services\Retailer\RetailerDataService;
 
 class RetailerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth')->only(['create', 'store']);
     }
 
     /**
@@ -24,7 +19,7 @@ class RetailerController extends Controller
      */
     public function create()
     {
-        //
+        return view('retailer.create');
     }
 
     /**
