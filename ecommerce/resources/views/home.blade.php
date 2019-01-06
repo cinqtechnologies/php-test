@@ -40,7 +40,9 @@
 
             <div class="card-columns">
                 <div v-for="product in products" class="card p-3">
-                    <img class="card-img-top" :src="'/storage/'+product.image" alt="Image">
+                    <a :href="'product/'+product.id">
+                        <img class="card-img-top" :src="'/storage/'+product.image" alt="Image">
+                    </a>
                     <div class="card-body">
                         <h5 class="card-title" v-text="product.name"></h5>
                         <p><strong>$ @{{ product.price }}</strong></p>

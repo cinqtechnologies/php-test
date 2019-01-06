@@ -77,8 +77,7 @@ class ProductController extends Controller
      */
     public function sendDetails(Request $request, $id)
     {
-        $product = ProductDataService::getDetails($id);
-        $status = EmailService::sendProductDetails($request->input('email'), $product);
+        $status = EmailService::sendProductDetails($request->input('email'), $id);
         
         return response()->json([
             'success' => $status

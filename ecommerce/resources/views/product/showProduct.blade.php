@@ -35,7 +35,7 @@
                         <h5>Send the product details to your email:</h5>
 
                         <div v-if="showSuccess" class="alert alert-success mt-2" role="alert">
-                            We've sent the product details do your email.
+                            Details sent to your email!
                         </div>
 
                         <div class="form-group">

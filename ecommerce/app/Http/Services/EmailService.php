@@ -10,13 +10,20 @@ namespace App\Http\Services;
 
 use App\Mail\ProductDetailsRequested;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Services\Product\ProductDataService;
+use Validator;
 
 class EmailService
 {
-
-    public static function sendProductDetails(string $email, \App\Product $product)
+    public static function sendProductDetails($email, int $product_id)
     {
+        Validator::make([ 'email' => $email ], [
+            'email' => 'required|email'
+        ])->validate();
+
+        $product = ProductDataService::getDetails($product_id);
         Mail::to($email)->send(new ProductDetailsRequested($product));
+
         return true;
     }
 }

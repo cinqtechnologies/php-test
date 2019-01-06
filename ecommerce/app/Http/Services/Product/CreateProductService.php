@@ -18,7 +18,7 @@ class CreateProductService
 {
     private static function validate(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        Validator::make($request->all(), [
             'retailer_id' => 'required|integer',
             'name' => 'required|max:200',
             'description' => 'required',
