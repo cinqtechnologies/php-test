@@ -3,8 +3,8 @@
 - clone the repository
 - in the ecommerce folder, edit the .env file:
 - DB_DATABASE=ecommerce
-- DB_USERNAME=root
-- DB_PASSWORD=
+- DB_USERNAME=yourusername
+- DB_PASSWORD=yourpassword
 - MAIL_DRIVER=log
 - then, run the following commands:
 - composer install
