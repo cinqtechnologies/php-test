@@ -31,7 +31,7 @@
                                 >
                                     <option></option>
                                     @foreach($retailers as $retailer)
-                                    <option value="{{ $retailer->id }}">{{ $retailer->name }}</option>
+                                    <option value="{{ $retailer->id }}" @if(old('retailer_id') == $retailer->id)selected @endif>{{ $retailer->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -71,7 +71,7 @@
                                 <label>Price</label>
                                 <input
                                         type="text"
-                                        name="website"
+                                        name="price"
                                         class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}"
                                         value="{{ old('price') }}"
                                         required>

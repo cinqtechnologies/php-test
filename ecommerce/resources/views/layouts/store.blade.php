@@ -24,7 +24,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="#">{{ config('app.name', 'App') }}</a>
+                <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name', 'App') }}</a>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     @auth
                     <a class="nav-item nav-link active" href="{{ url('/dashboard') }}">Dashboard</a>
