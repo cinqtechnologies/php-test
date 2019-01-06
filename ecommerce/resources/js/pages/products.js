@@ -3,10 +3,12 @@ const app = new Vue({
    data: {
       pageLoading: true,
       showRetailerDetails: false,
-      currentPage: 1,
-      totalProducts: 0,
       products: [],
-      retailer: null
+      retailer: {
+         id: ''
+      },
+      currentPage: 1,
+      totalPages: 1
    },
    mounted(){
       this.getProducts().then(() => {
@@ -21,13 +23,15 @@ const app = new Vue({
    },
    
    methods: {
-      getProducts(retailerId = ''){
+      getProducts(page = 1){
          this.pageLoading = true
+         this.currentPage = page
+         
          return axios
-            .get('/products/'+this.currentPage+'/'+retailerId)
+            .get('/products/'+this.retailer.id+'?page='+page)
             .then(res => {
                this.products = res.data.products.data
-               this.totalProducts = res.data.products.total
+               this.totalPages = res.data.products.last_page
             })
             .then( () => {
                this.pageLoading = false
@@ -36,18 +40,20 @@ const app = new Vue({
       },
 
       productsByRetailer(retailerId){
+         this.retailer.id = retailerId
+         this.getProducts()
+
          axios
             .get('/retailer/'+retailerId)
             .then(res => {
-               this.retailer = res.data.retailer
+               this.retailer = Object.assign({}, this.retailer, res.data.retailer)
                this.showRetailerDetails = true
             })
             .catch(error => console.log(error))
-
-         this.getProducts(retailerId)
       },
 
       dismissRetailerFilter(){
+         this.retailer.id = ''
          this.getProducts()
          this.showRetailerDetails = false
       }

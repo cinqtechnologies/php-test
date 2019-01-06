@@ -98,10 +98,12 @@ var app = new Vue({
   data: {
     pageLoading: true,
     showRetailerDetails: false,
-    currentPage: 1,
-    totalProducts: 0,
     products: [],
-    retailer: null
+    retailer: {
+      id: ''
+    },
+    currentPage: 1,
+    totalPages: 1
   },
   mounted: function mounted() {
     this.getProducts().then(function () {
@@ -117,11 +119,12 @@ var app = new Vue({
     getProducts: function getProducts() {
       var _this = this;
 
-      var retailerId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       this.pageLoading = true;
-      return axios.get('/products/' + this.currentPage + '/' + retailerId).then(function (res) {
+      this.currentPage = page;
+      return axios.get('/products/' + this.retailer.id + '?page=' + page).then(function (res) {
         _this.products = res.data.products.data;
-        _this.totalProducts = res.data.products.total;
+        _this.totalPages = res.data.products.last_page;
       }).then(function () {
         _this.pageLoading = false;
       }).catch(function (error) {
@@ -131,15 +134,17 @@ var app = new Vue({
     productsByRetailer: function productsByRetailer(retailerId) {
       var _this2 = this;
 
+      this.retailer.id = retailerId;
+      this.getProducts();
       axios.get('/retailer/' + retailerId).then(function (res) {
-        _this2.retailer = res.data.retailer;
+        _this2.retailer = Object.assign({}, _this2.retailer, res.data.retailer);
         _this2.showRetailerDetails = true;
       }).catch(function (error) {
         return console.log(error);
       });
-      this.getProducts(retailerId);
     },
     dismissRetailerFilter: function dismissRetailerFilter() {
+      this.retailer.id = '';
       this.getProducts();
       this.showRetailerDetails = false;
     }

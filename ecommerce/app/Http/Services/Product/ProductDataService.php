@@ -20,13 +20,11 @@ class ProductDataService{
     
     public static function getList(Request $request, $retailer_id = null)
     {
-        $products = Product::with('retailer')
+        return Product::with('retailer')
             ->when(! empty($retailer_id), function($q) use ($retailer_id){
                 $q->where('retailer_id', '=', $retailer_id);
             })
             ->orderBy('price')
-            ->paginate(15);
-
-        return $products;
+            ->paginate(6);
     }
 }

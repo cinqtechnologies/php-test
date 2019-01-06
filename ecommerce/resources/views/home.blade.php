@@ -38,41 +38,39 @@
 
             <h2 class="h2 my-4" v-text="labelProducts"></h2>
 
-            <div v-if="totalProducts == 0" class="alert alert-warning" role="alert">
-                No product found
-            </div>
+            <div class="card-columns">
+                <div v-for="product in products" class="card p-3">
+                    <img class="card-img-top" :src="'/storage/'+product.image" alt="Image">
+                    <div class="card-body">
+                        <h5 class="card-title" v-text="product.name"></h5>
+                        <p><strong>$ @{{ product.price }}</strong></p>
+                        <p>
+                            <a href="#" v-text="product.retailer.name" @click.prevent="productsByRetailer(product.retailer_id)"></a>
+                        </p>
+                        <p v-text="product.description" class="card-text"></p>
 
-            <div v-else>
-                <div class="card-columns">
-                    <div v-for="product in products" class="card p-3">
-                        <img class="card-img-top" :src="'/storage/'+product.image" alt="Image">
-                        <div class="card-body">
-                            <h5 class="card-title" v-text="product.name"></h5>
-                            <p><strong>$ @{{ product.price }}</strong></p>
-                            <p>
-                                <a href="#" v-text="product.retailer.name" @click.prevent="productsByRetailer(product.retailer_id)"></a>
-                            </p>
-                            <p v-text="product.description" class="card-text"></p>
-
-                            <a :href="'product/'+product.id" class="btn btn-sm btn-outline-primary">Detalhes</a>
-                        </div>
+                        <a :href="'product/'+product.id" class="btn btn-sm btn-outline-primary">Detalhes</a>
                     </div>
                 </div>
-
-                <nav v-if="totalProducts > 0">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
+
+            <nav v-if="totalPages > 1">
+                <ul class="pagination justify-content-center mt-4">
+                    <li class="page-item" :class="{'disabled': currentPage === 1}">
+                        <a class="page-link" href="#" @click="getProducts(1)" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li v-for="page in totalPages" class="page-item" :class="{'active': page === currentPage}">
+                        <a class="page-link" href="#" @click="getProducts(page)" v-text="page"></a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link"
+                           :class="{'disabled': currentPage === totalPages}"
+                           @click="getProducts(totalPages)"
+                           href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 @endsection
