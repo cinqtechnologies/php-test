@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\Retailer\RetailerDataService;
 use Illuminate\Http\Request;
-use App\Http\Services\Product\ProductDataService;
+use App\Http\Services\Product\{ProductDataService, CreateProductService};
 use App\Http\Services\EmailService;
 
 class ProductController extends Controller
@@ -35,7 +36,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create', [
+            'retailers' => RetailerDataService::getList()
+        ]);
     }
 
     /**
@@ -46,7 +49,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = CreateProductService::create($request);
+
+        $request->session()->flash('success', "The product <i>{$product->name}</i> was created.");
+
+        return back();
     }
 
     /**
@@ -57,7 +64,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return view('product', [
+        return view('product.showProduct', [
             'product' => ProductDataService::getDetails($id) 
         ]);
     }
@@ -76,28 +83,5 @@ class ProductController extends Controller
         return response()->json([
             'success' => $status
         ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

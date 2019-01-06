@@ -17,4 +17,9 @@ class RetailerDataService
     {
         return Retailer::find($retailer_id);
     }
+    
+    public static function getList()
+    {
+        return Retailer::orderBy('name')->get();
+    }
 }
