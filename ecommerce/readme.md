@@ -17,3 +17,14 @@
 - access the application: http://127.0.0.1:8000
 
 The email mock will the stored at storage/logs folder
+
+## API
+
+List all products in chunks of 6 items
+- http://127.0.0.1:8000/products?page={page}
+
+List all the retailer's products in chunks of 6 items
+- http://127.0.0.1:8000/products/{retailer_id}?page={page}
+
+Fetch the product details
+- http://127.0.0.1:8000/product/{product_id}
