@@ -101,7 +101,7 @@ class App extends CI_Controller {
     		$this->form_validation->set_message( __FUNCTION__ , 'The {field} field is required');
     		return false;
     	} else if(!in_array($_FILES['image']['type'], ['image/jpeg','image/png'])) {
-    		$this->form_validation->set_message( __FUNCTION__ , 'The {field} file type is not supported');
+    		$this->form_validation->set_message( __FUNCTION__ , 'The {field} file type is not supported. Accepted formats: jpeg,png');
     		return false;
     	} else if($_FILES['image']['size'] > 500000) {
     		$this->form_validation->set_message( __FUNCTION__ , 'The max permitted {field} size is 500kb');
