@@ -3,7 +3,7 @@
 class ProductModel extends CI_Model {
 
 	public function insert() {
-		//--INSERT INTO ecommerce_test.products (retailer_id, name, image, price, description) VALUES (1,'TEST product', 'img.png', 100.01, 'PRODUCT DESCRIPTION');
+		$sql = "INSERT INTO ecommerce_test.products (retailer_id, name, image, price, description) VALUES (1,'TEST product', 'img.png', 100.01, 'PRODUCT DESCRIPTION');";
 	}
 
 	public function getProducts($productId = 0,$retailerId = 0) {
@@ -14,11 +14,11 @@ class ProductModel extends CI_Model {
 		-- WHERE p.retailer_id = :retailer_id
 		-- WHERE p.id = :product_id
 		*/
-
 		$sql = 'SELECT 
 					p.id,
 					p.name AS product_name,
 					p.retailer_id,
+					p.price,
 					p.image,
 					r.name AS retailer_name,
 					p.description
@@ -36,7 +36,10 @@ class ProductModel extends CI_Model {
 			$sql .= 'WHERE p.retailer_id = ' . (int) $retailerId;
 		}
 
-		if( is_null($productId) || is_numeric($productId) ) {
+		if(is_numeric($productId)) {
+			$rs = $this->db->query($sql);
+			$result = $rs->row();
+		} else if( is_null($productId) ) {
 			$rs = $this->db->query($sql);
 			//echo '<pre>'; var_dump($rs);
 			while ($row = $rs->unbuffered_row()) {

@@ -9,7 +9,7 @@ class Products extends CI_Controller {
 
 	public function index() {
 		$this->load->model('ProductModel');
-		$products = $this->ProductModel->getProducts($this->uri->segment(2));
+		$products = $this->ProductModel->getProducts($this->uri->segment(2),null);
 		//var_dump($this->uri->segment(2)); exit;
 		header('Content-Type: application/json');
 		echo json_encode($products);
