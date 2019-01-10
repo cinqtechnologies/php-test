@@ -1,6 +1,0 @@
-__ci_last_regenerate|i:1547154571;errors|s:195:"<p>The Retailer field is required.</p>
-<p>The Product name field is required.</p>
-<p>The Image field is required</p>
-<p>The Price field is required.</p>
-<p>The Description field is required.</p>
-";__ci_vars|a:2:{s:6:"errors";s:3:"old";s:9:"last_post";s:3:"old";}last_post|a:4:{s:16:"product_retailer";s:0:"";s:12:"product_name";s:0:"";s:13:"product_price";s:0:"";s:19:"product_description";s:0:"";}
