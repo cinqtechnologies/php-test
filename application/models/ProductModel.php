@@ -2,8 +2,9 @@
 
 class ProductModel extends CI_Model {
 
-	public function insert() {
-		$sql = "INSERT INTO ecommerce_test.products (retailer_id, name, image, price, description) VALUES (1,'TEST product', 'img.png', 100.01, 'PRODUCT DESCRIPTION');";
+	public function insert($data) {
+		//$sql = "INSERT INTO ecommerce_test.products (retailer_id, name, image, price, description) VALUES (1,'TEST product', 'img.png', 100.01, 'PRODUCT DESCRIPTION');";
+		$this->db->insert('ecommerce_test.products', $data);
 	}
 
 	public function getProducts($productId = 0,$retailerId = 0) {

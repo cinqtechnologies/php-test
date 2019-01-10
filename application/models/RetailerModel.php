@@ -2,8 +2,9 @@
 
 class RetailerModel extends CI_Model {
 
-	public function insert() {
-		$sql = "INSERT INTO retailer (name, logo, website, description) VALUES ('TEST retailer', 'logo.png', 'www.website.com', 'RETAILER DESCRIPTION');";
+	public function insert($data) {
+		//$sql = "INSERT INTO retailer (name, logo, website, description) VALUES ('TEST retailer', 'logo.png', 'www.website.com', 'RETAILER DESCRIPTION');";
+		$this->db->insert('ecommerce_test.retailer', $data);
 	}
 
 	public function getDetails($retailerId = 0) {

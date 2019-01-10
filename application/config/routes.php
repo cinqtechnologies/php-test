@@ -60,3 +60,6 @@ $route['retailer/(:any)'] = 'retailer/index/$1';
 $route['app/create-retailer'] = 'app/createretailer';
 $route['app/create-product'] = 'app/createproduct';
 $route['app/product-details/(:any)'] = 'app/productdetails/$1';
+
+$route['app/store-product']['post'] = "app/storeProduct";
+$route['app/store-retailer']['post'] = "app/storeRetailer";
