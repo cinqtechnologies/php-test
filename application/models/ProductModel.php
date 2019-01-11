@@ -3,7 +3,7 @@
 class ProductModel extends CI_Model {
 
 	public function insert($data) {
-		$this->db->insert('ecommerce_test.products', $data);
+		$this->db->insert('products', $data);
 	}
 
 	public function getProducts($productId = 0,$retailerId = 0,$order = 'ASC') {
@@ -18,9 +18,9 @@ class ProductModel extends CI_Model {
 					r.name AS retailer_name,
 					p.description
 				FROM
-					ecommerce_test.products AS p
+					products AS p
 				INNER JOIN
-					ecommerce_test.retailer AS r
+					retailer AS r
 				ON p.retailer_id = r.id ';
 
 		if(is_numeric($productId)) {

@@ -12,7 +12,7 @@ class Migration_Create_tables extends CI_Migration {
 		$this->dbforge->add_field("creation_date DATETIME DEFAULT CURRENT_TIMESTAMP");
 		//$this->dbforge->add_key('id', TRUE);
         if($this->dbforge->create_table('retailer')) {
-        	echo 'created table ecommerce_test.retailer <br />';
+        	echo 'created table retailer <br />';
         }
 
         $this->dbforge->add_field('id');
@@ -26,7 +26,7 @@ class Migration_Create_tables extends CI_Migration {
 		//$this->dbforge->add_key('id', TRUE);
 
         if($this->dbforge->create_table('products')) {
-        	echo 'created table ecommerce_test.products <br />';
+        	echo 'created table products <br />';
         }
 	}
 }

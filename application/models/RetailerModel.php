@@ -3,7 +3,7 @@
 class RetailerModel extends CI_Model {
 
 	public function insert($data) {
-		$this->db->insert('ecommerce_test.retailer', $data);
+		$this->db->insert('retailer', $data);
 	}
 
 	public function getDetails($retailerId = 0) {
@@ -16,7 +16,7 @@ class RetailerModel extends CI_Model {
 					r.logo,
 					r.website
 				FROM 
-					ecommerce_test.retailer AS r 
+					retailer AS r 
 				WHERE r.id = ' . (int) $retailerId ;
 
 		if(is_numeric($retailerId)) {
@@ -37,7 +37,7 @@ class RetailerModel extends CI_Model {
 					r.description,
 					r.website
 				FROM 
-					ecommerce_test.retailer AS r ';
+					retailer AS r ';
 
 		$rs = $this->db->query($sql);
 		
