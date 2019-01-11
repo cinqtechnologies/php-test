@@ -8,8 +8,7 @@ class ProductModel extends CI_Model {
 
 	public function getProducts($productId = 0,$retailerId = 0,$order = 'ASC') {
 		$result = [];
-		//var_dump(is_numeric($productId));
-		//var_dump($productId);
+		
 		$sql = 'SELECT 
 					p.id,
 					p.name AS product_name,
@@ -37,7 +36,10 @@ class ProductModel extends CI_Model {
 			if($rs->num_rows()){
 				$result = $rs->row();
 			}
-		} else if( is_null($productId) ) {
+		} else if(is_null($productId)) {
+
+			$sql .= ' ORDER BY p.id ' . $order;
+
 			$rs = $this->db->query($sql);
 			while ($row = $rs->unbuffered_row()) {
 				array_push($result, $row);

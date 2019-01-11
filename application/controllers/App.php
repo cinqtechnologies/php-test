@@ -13,12 +13,12 @@ class App extends CI_Controller {
 	public function index() {
 		$retailerDetails = null;
 		$retailerId = $this->input->get('retailer');
-		$products = $this->ProductModel->getProducts(null,$retailerId);
+		$products = $this->ProductModel->getProducts(null,$retailerId, 'DESC');
 		if(is_numeric($retailerId)) {
 			$retailerDetails = $this->RetailerModel->getDetails($retailerId);
 		}
 		$this->load->view('header');
-		$this->load->view('product-list',['products' => $products, 'retailer_details' => $retailerDetails]);
+		$this->load->view('product-list',['products' => $products, 'retailer_details' => $retailerDetails, 'retailer_id' => $retailerId]);
 		$this->load->view('footer');
 	}
 
@@ -80,7 +80,6 @@ class App extends CI_Controller {
 			$this->session->set_flashdata('last_post', $_POST);
 			redirect(base_url('app/create-retailer'));
 		} else {
-
 			$fileData = 'data:'.$_FILES['image']['type'].';base64,' . base64_encode(file_get_contents($_FILES['image']['tmp_name']));
 			$insertData = [
 				'name' => html_escape($this->input->post('retailer_name')),

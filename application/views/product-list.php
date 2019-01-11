@@ -12,10 +12,12 @@
     </div>
 </div>
 <br />
-<?php else: ?>
-<!--<div class="card-block px-2">
-  <h4 class="card-title">Retailer not found</h4>
-</div>-->
+<?php elseif(!is_null($retailer_id)): ?>
+<div class="card flex-row flex-wrap">
+	<div class="card-block px-2">
+	  <h4 class="card-title">Retailer not found</h4>
+	</div>
+</div>
 <?php endif; ?>
 
 <div class="card-columns">
