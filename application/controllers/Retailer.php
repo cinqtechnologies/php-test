@@ -12,7 +12,7 @@ class Retailer extends CI_Controller {
 		$this->load->model('ProductModel');
 		$retailerId = $this->uri->segment(2);
 		$details = $this->RetailerModel->getDetails($retailerId);
-		$retailerProducts = !is_null($retailerId) ? $this->ProductModel->getProducts(null,$retailerId) : [];
+		$retailerProducts = (!is_null($retailerId) && is_numeric($retailerId)) ? $this->ProductModel->getProducts(null,$retailerId) : [];
 		header('Content-Type: application/json');
 		echo json_encode(['details' => $details,'products' => $retailerProducts]);
 	}

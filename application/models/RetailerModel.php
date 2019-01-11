@@ -21,7 +21,9 @@ class RetailerModel extends CI_Model {
 
 		if(is_numeric($retailerId)) {
 			$rs = $this->db->query($sql);
-			$result = $rs->row();
+			if($rs->num_rows()){
+				$result = $rs->row();
+			}
 		}
 
 		return $result;
@@ -38,7 +40,7 @@ class RetailerModel extends CI_Model {
 					ecommerce_test.retailer AS r ';
 
 		$rs = $this->db->query($sql);
-		//echo '<pre>'; var_dump($rs);
+		
 		while ($row = $rs->unbuffered_row()) {
 			array_push($result, $row);
 		}
