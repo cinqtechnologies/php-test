@@ -2,7 +2,7 @@
 CREATE DATABASE IF NOT EXISTS ecommerce_test;
 USE ecommerce_test;
 
-CREATE TABLE IF NOT EXISTS products (
+CREATE TABLE IF NOT EXISTS ecommerce_test.products (
 	id INT NOT NULL auto_increment,
 	retailer_id INT NOT NULL,
 	name VARCHAR(150) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS products (
 	PRIMARY KEY (id)
  );
 
-CREATE TABLE IF NOT EXISTS retailer (
+CREATE TABLE IF NOT EXISTS ecommerce_test.retailer (
 	id INT NOT NULL auto_increment,
 	name VARCHAR(150) NOT NULL,
 	logo TEXT,
