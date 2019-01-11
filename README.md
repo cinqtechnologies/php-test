@@ -1,7 +1,7 @@
 ## Instructions
 - This project was made using Codeigniter framework, MySQL and PHP7
 - Create a database (Example: CREATE DATABASE ecommerce_test)
-- Edit .env.development with database host,user and password (if necessary)
+- Edit .env.development with database host,user, password and database
 	-Example:
 	```
 	DATABASE_HOST=127.0.0.1
