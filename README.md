@@ -1,76 +1,22 @@
-# PHP skills test
+## Instructions
+- This project was made using Codeigniter framework, MySQL and PHP7
+- Create a database (Example: CREATE DATABASE ecommerce_test)
+- Edit .env.development with database host,user, password and database
+	-Example:
+	```
+	DATABASE_HOST=127.0.0.1
+	DATABASE_USER=root
+	DATABASE_PASS=root
+	DATABASE_NAME=ecommerce_test
+	```
+- Start php built-in server at application root folder using: php -S 127.0.0.1:8080
+- Create application tables by accessing the following address at browser: http://127.0.0.1:8080/migrate
+- Access application adress: http://127.0.0.1:8080/
+- The following directories need write permission:
+	- php-test/mock_email (Store email mock)
+	- php-test/system/sessions (Store session files)
 
-## Objective
-The aim of this test is to evaluate the applicant skills on:
-- Basic backend concepts;
-- Database queries;
-- Data manipulation and treatment;
-- MVC concept for a back + front end application
-- API building concepts
-- Code structure and organization
-
----
-
-## How to start and send us the test
-- Fork this repository
-- Create a branch with your name-surname as its name (e.i. john-doe)
-- Develop the test
-- Create a pull request to this repo on the master branch with your code.
-
----
-
-## Basic Guidelines
-For this test you are developing a small e-commerce app. The app must have just a list of products. The products must display the following:
-
-- Name
-- Price
-- One Image
-- Retailer name
-- Description
-
-Also, the user must be able to click on any retailer name, and filter the product list to show only the selected retailer's products alongside with the retailer's details. The retailer must have the following details:
-- Name
-- Logo (image)
-- Description
-- Website
-
----
-
-## Additional Guidelines
-
-The main ideia of this test is to understand how your logical thinkin works when deciding how to implement some generic requirements. Considering that, you may:
-- Use any framework you feel confortable with;
-- Use any database you feel confortable with;
-
-Keep in mind that we may contact you to ask you some question about your test, regarding how and why you took a given decision when developing the app for this test.
-
----
-
-## Basic Requirements
-The final app must have:
-- A product list view;
-- A single product view
-  - An e-mail input where user can insert his/her e-mail to get a given product details sent to his/her e-mail (the e-mail may not be actually sent, but it must be generated have the delivery simulated/mocked);
-- A retailer view
-  - Retailer's products and details
-- A Product create view
-- A Retailer create view
-- API endpoints that return JSONs for:
-  - Product list
-  - Product details
-  - Retailer details and products
-
----
-
-## Additional Requirements
-When you finish the test app, you must:
-- Provide a README.md with:
-  - Instructions how to make your app work with a database (schema name, ENV variables to set, username and password, etc.);
-  - The API endpoints and the application URL for the server-side rendered views;
-- Code a build command that will build your code and prepare a mock server to test it.
-- Push your code to a github repository and give [cinqtechnologies](https://github.com/cinqtechnologies/) access to it;
-
----
-
-## Pluses
-- Unit tests
+## API endpoints
+- http://127.0.0.1:8080/products (list all products)
+- http://127.0.0.1:8080/products/{product_id} (product details)
+- http://127.0.0.1:8080/retailer/{retailer_id} (retailer details and products)
