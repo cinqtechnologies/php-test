@@ -63,3 +63,5 @@ $route['app/product-details/(:any)'] = 'app/productdetails/$1';
 
 $route['app/store-product']['post'] = "app/storeProduct";
 $route['app/store-retailer']['post'] = "app/storeRetailer";
+
+$route['app/send-email/(:any)']['post'] = "app/sendMockEmail/$1";

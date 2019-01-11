@@ -3,18 +3,13 @@
 class ProductModel extends CI_Model {
 
 	public function insert($data) {
-		//$sql = "INSERT INTO ecommerce_test.products (retailer_id, name, image, price, description) VALUES (1,'TEST product', 'img.png', 100.01, 'PRODUCT DESCRIPTION');";
 		$this->db->insert('ecommerce_test.products', $data);
 	}
 
-	public function getProducts($productId = 0,$retailerId = 0) {
+	public function getProducts($productId = 0,$retailerId = 0,$order = 'ASC') {
 		$result = [];
 		//var_dump(is_numeric($productId));
 		//var_dump($productId);
-		/*
-		-- WHERE p.retailer_id = :retailer_id
-		-- WHERE p.id = :product_id
-		*/
 		$sql = 'SELECT 
 					p.id,
 					p.name AS product_name,
@@ -39,10 +34,11 @@ class ProductModel extends CI_Model {
 
 		if(is_numeric($productId)) {
 			$rs = $this->db->query($sql);
-			$result = $rs->row();
+			if($rs->num_rows()){
+				$result = $rs->row();
+			}
 		} else if( is_null($productId) ) {
 			$rs = $this->db->query($sql);
-			//echo '<pre>'; var_dump($rs);
 			while ($row = $rs->unbuffered_row()) {
 				array_push($result, $row);
 			}

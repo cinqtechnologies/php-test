@@ -17,7 +17,6 @@ class App extends CI_Controller {
 		if(is_numeric($retailerId)) {
 			$retailerDetails = $this->RetailerModel->getDetails($retailerId);
 		}
-		//var_dump($this->uri->segment(2)); exit;
 		$this->load->view('header');
 		$this->load->view('product-list',['products' => $products, 'retailer_details' => $retailerDetails]);
 		$this->load->view('footer');
@@ -49,15 +48,14 @@ class App extends CI_Controller {
 			$this->session->set_flashdata('last_post', $_POST);
 			redirect(base_url('app/create-product'));
 		} else {
-
 			$fileData = 'data:'.$_FILES['image']['type'].';base64,' . base64_encode(file_get_contents($_FILES['image']['tmp_name']));
 
 			$insertData = [
 				'retailer_id' => $this->input->post('product_retailer'),
-				'name' => $this->input->post('product_name'),
+				'name' => html_escape($this->input->post('product_name')),
 				'image' => $fileData,
 				'price' => $this->input->post('product_price'),
-				'description' => $this->input->post('product_description')
+				'description' => html_escape($this->input->post('product_description'))
 			];
 			$this->ProductModel->insert($insertData);
 			$this->session->set_flashdata('success', 'Product added succesfully');
@@ -85,10 +83,10 @@ class App extends CI_Controller {
 
 			$fileData = 'data:'.$_FILES['image']['type'].';base64,' . base64_encode(file_get_contents($_FILES['image']['tmp_name']));
 			$insertData = [
-				'name' => $this->input->post('retailer_name'),
+				'name' => html_escape($this->input->post('retailer_name')),
 				'logo' => $fileData,
-				'website' => $this->input->post('retailer_website'),
-				'description' => $this->input->post('retailer_description')
+				'website' => html_escape($this->input->post('retailer_website')),
+				'description' => html_escape($this->input->post('retailer_description'))
 			];
 			$this->RetailerModel->insert($insertData);
 			$this->session->set_flashdata('success', 'Retailer added succesfully');
@@ -111,5 +109,25 @@ class App extends CI_Controller {
 		return true;
     }
 
- 	//array(1) { ["image"]=> array(5) { ["name"]=> string(11) "celular.jpg" ["type"]=> string(10) "image/jpeg" ["tmp_name"]=> string(66) "/private/var/folders/1s/6_vwb6td1zs64_1r331j03q00000gn/T/phpy1AdOS" ["error"]=> int(0) ["size"]=> int(5181) } } 
+    public function sendMockEmail() {
+    	$this->form_validation->set_rules('user_email', 'Email', 'trim|required|valid_email');
+
+    	if ($this->form_validation->run() == FALSE){
+			$this->session->set_flashdata('errors', validation_errors());
+			$this->session->set_flashdata('last_post', $_POST);
+		} else {
+			$product = $this->ProductModel->getProducts($this->uri->segment(3),null);
+			$this->load->helper('email_helper');
+			$emailText = email_content($this->input->post('user_email'), $product);
+
+			if($emailText === false || !write_file(FCPATH . 'mock_email/' . date('d-m-YHis') . '.txt', $emailText, 'w+')) {
+				$this->session->set_flashdata('errors', 'An error ocurred while sending email.');
+			} else {
+				$this->session->set_flashdata('success', 'Email sent successfully!');
+			}
+		}
+
+		redirect(base_url('app/product-details/'.$this->uri->segment(3)));
+    }
+
 }

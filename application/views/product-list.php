@@ -10,8 +10,6 @@
       <h6 class="card-title"><a href="//<?=$retailer_details->website?>" target="_blank"><?=$retailer_details->website?></a></h6>
       <p class="card-text"><?=wordwrap(nl2br($retailer_details->description),110,'<br />')?></p>
     </div>
-
-   
 </div>
 <br />
 <?php else: ?>
