@@ -9,6 +9,28 @@ use Illuminate\Support\Facades\Log;
 
 class RetailersController extends Controller
 {
+    public function index(Request $request) {
+        try {
+
+            $name = $request->query("name");
+            $query = Retailer::query();
+
+            if(!empty($name))
+            {
+                $query->where("name", "like", "%".$name."%");
+            }
+
+            $retailers = $query->get();
+
+            return new JsonResponse($retailers, 200);
+
+        } catch(\Exception $e)
+        {
+            Log::error($e->getTraceAsString());
+            return new JsonResponse("An error occurred while fetching the list of retailers", 500);
+        }
+    }
+
     public function create(Request $request) {
         try {
 
@@ -28,7 +50,7 @@ class RetailersController extends Controller
 
         } catch(\Exception $e)
         {
-            Log::info($e->getMessage());
+            Log::error($e->getMessage());
             return new JsonResponse("An error occurred while persisting the data", 500);
         }
     }
