@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: marco
- * Date: 08/05/19
- * Time: 23:39
- */
+
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
@@ -24,7 +20,7 @@ class ProductsController extends Controller
         } catch(\Exception $e)
         {
             Log::error($e->getTraceAsString());
-            return new JsonResponse("An error occurred while fetching the list of products", 500);
+            return new JsonResponse(["error" => "An error occurred while fetching the list of products"], 500);
         }
     }
 
@@ -48,7 +44,25 @@ class ProductsController extends Controller
         } catch(\Exception $e)
         {
             Log::error($e->getTraceAsString());
-            return new JsonResponse("An error occurred while persisting the data", 500);
+            return new JsonResponse(["error" => "An error occurred while persisting the data"], 500);
+        }
+    }
+
+    public function view(int $id) {
+        try {
+
+            $product = Product::with(["retailer"])->find($id);
+            if(!$product)
+            {
+                return new JsonResponse(["not_found"=>"Could not find any product with the supplied id"], 404);
+            }
+
+            return new JsonResponse($product, 200);
+
+        } catch(\Exception $e)
+        {
+            Log::error($e->getTraceAsString());
+            return new JsonResponse(["error" => "An error occurred while loading the product's details"], 500);
         }
     }
 }

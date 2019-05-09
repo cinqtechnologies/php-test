@@ -27,7 +27,7 @@ class RetailersController extends Controller
         } catch(\Exception $e)
         {
             Log::error($e->getTraceAsString());
-            return new JsonResponse("An error occurred while fetching the list of retailers", 500);
+            return new JsonResponse(["error" => "An error occurred while fetching the list of retailers"], 500);
         }
     }
 
@@ -51,7 +51,7 @@ class RetailersController extends Controller
         } catch(\Exception $e)
         {
             Log::error($e->getMessage());
-            return new JsonResponse("An error occurred while persisting the data", 500);
+            return new JsonResponse(["error" => "An error occurred while persisting the data"], 500);
         }
     }
 }

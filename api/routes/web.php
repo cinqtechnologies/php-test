@@ -27,6 +27,7 @@ $router->group(["prefix" => "api/v1"], function () use ($router) {
     $router->group(["prefix" => "products"], function () use ($router) {
 
         $router->get("/", "ProductsController@index");
+        $router->get("{id}", "ProductsController@view");
         $router->post("/", "ProductsController@create");
 
     });
