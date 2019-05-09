@@ -8,7 +8,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -16,6 +15,19 @@ use Illuminate\Support\Facades\Log;
 
 class ProductsController extends Controller
 {
+    public function index() {
+        try {
+
+            $products = Product::with("retailer")->get();
+            return new JsonResponse($products, 200);
+
+        } catch(\Exception $e)
+        {
+            Log::error($e->getTraceAsString());
+            return new JsonResponse("An error occurred while fetching the list of products", 500);
+        }
+    }
+
     public function create(Request $request) {
         try {
 
