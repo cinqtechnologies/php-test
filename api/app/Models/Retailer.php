@@ -19,6 +19,6 @@ class Retailer extends BaseModel
     }
 
     public function products() {
-        return $this->hasMany('App\Product', 'retailerId');
+        return $this->hasMany('App\Models\Product', 'retailerId');
     }
 }

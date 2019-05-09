@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Retailer;
@@ -52,6 +54,24 @@ class RetailersController extends Controller
         {
             Log::error($e->getMessage());
             return new JsonResponse(["error" => "An error occurred while persisting the data"], 500);
+        }
+    }
+
+    public function view(int $id) {
+        try {
+
+            $retailer = Retailer::with(["products"])->find($id);
+            if(!$retailer)
+            {
+                return new JsonResponse(["not_found" => "Could not find a retailer with the supplied id"], 404);
+            }
+
+            return new JsonResponse($retailer, 200);
+
+        } catch(\Exception $e)
+        {
+            Log::error($e->getTraceAsString());
+            return new JsonResponse(["error" => "An error occurred while loading the retailer's details"], 500);
         }
     }
 }
