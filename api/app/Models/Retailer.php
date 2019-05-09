@@ -14,6 +14,8 @@ class Retailer extends BaseModel
             "description" => "required",
             "website" => "required"
         ];
+
+        $this->fillable = array_keys($this->rules);
     }
 
     public function products() {

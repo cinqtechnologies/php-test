@@ -14,22 +14,22 @@ class RetailersController extends Controller
 
             $retailer = new Retailer();
 
-            $data = $request->only(["name", "logo", "description", "website"]);
+            $data = $request->only($retailer->getFillable());
 
             if(!$retailer->validate($data))
             {
                 return new JsonResponse($retailer->getErrors(), 400);
             }
 
-//            Log::info($retailer->attributesToArray());
-
             $retailer->fill($data);
-            $retailer->attributesToArray()
             $retailer->save();
+
+            return new JsonResponse($retailer, 201);
 
         } catch(\Exception $e)
         {
             Log::info($e->getMessage());
+            return new JsonResponse("An error occurred while persisting the data", 500);
         }
     }
 }

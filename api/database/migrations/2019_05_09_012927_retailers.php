@@ -19,6 +19,7 @@ class Retailers extends Migration
            $table->string("logo");
            $table->text("description");
            $table->string("website");
+           $table->timestamps();
         });
     }
 
