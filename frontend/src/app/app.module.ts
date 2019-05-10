@@ -8,12 +8,14 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RetailersService } from './services/retailers.service';
 import { BaseService } from './services/base.service';
 import { RetailerViewComponent } from './pages/retailer-view/retailer-view.component';
+import { ProductsTableComponent } from './components/products-table/products-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RetailerListComponent,
-    RetailerViewComponent
+    RetailerViewComponent,
+    ProductsTableComponent
   ],
   imports: [
     BrowserModule,

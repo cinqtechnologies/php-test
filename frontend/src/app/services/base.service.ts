@@ -17,8 +17,8 @@ export class BaseService<T> {
     this.baseUrl = environment.apiEndpoint;
     }
 
-  index(uri: string) : Observable<T[]> {
-    return this.client.get<T[]>(this.baseUrl+uri).pipe(map((response: T[]) => response));
+  index(uri: string, filters: string='') : Observable<T[]> {
+    return this.client.get<T[]>(this.baseUrl+uri+filters).pipe(map((response: T[]) => response));
   }
 
   view(uri: string): Observable<T> {

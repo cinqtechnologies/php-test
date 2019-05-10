@@ -27,4 +27,16 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Products for sale by {{retailer.name}}</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <app-products-table [retailerId]=retailer.id></app-products-table>
+    </div>
+  </div>
+
 </div>
