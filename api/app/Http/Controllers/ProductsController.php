@@ -11,10 +11,19 @@ use Illuminate\Support\Facades\Log;
 
 class ProductsController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         try {
 
-            $products = Product::with("retailer")->get();
+            $retailerId = $request->get("retailerId");
+            $query = Product::with("retailer");
+
+            if(!empty($retailerId))
+            {
+                $query->where("retailerId", $retailerId);
+            }
+
+            $products = $query->get();
+
             return new JsonResponse($products, 200);
 
         } catch(\Exception $e)
