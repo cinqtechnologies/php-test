@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RetailerListComponent } from './pages/retailer-list/retailer-list.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { RetailersService } from './services/retailers.service';
+import { BaseService } from './services/base.service';
 
 @NgModule({
   declarations: [
@@ -12,9 +15,13 @@ import { RetailerListComponent } from './pages/retailer-list/retailer-list.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    BaseService,
+    RetailersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
