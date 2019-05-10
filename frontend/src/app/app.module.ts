@@ -9,13 +9,15 @@ import { RetailersService } from './services/retailers.service';
 import { BaseService } from './services/base.service';
 import { RetailerViewComponent } from './pages/retailer-view/retailer-view.component';
 import { ProductsTableComponent } from './components/products-table/products-table.component';
+import { ProductListComponent } from './pages/product-list/product-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RetailerListComponent,
     RetailerViewComponent,
-    ProductsTableComponent
+    ProductsTableComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
