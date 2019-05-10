@@ -13,6 +13,9 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { ProductViewComponent } from './pages/product-view/product-view.component';
 import { RetailerAddComponent } from './pages/retailer-add/retailer-add.component';
 import { FormsModule } from '@angular/forms';
+import { ProductAddComponent } from './pages/product-add/product-add.component';
+import { RetailerDropdownComponent } from './components/retailer-dropdown/retailer-dropdown.component';
+import { RetailersDropdownComponent } from './components/retailers-dropdown/retailers-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { FormsModule } from '@angular/forms';
     ProductsTableComponent,
     ProductListComponent,
     ProductViewComponent,
-    RetailerAddComponent
+    RetailerAddComponent,
+    ProductAddComponent,
+    RetailerDropdownComponent,
+    RetailersDropdownComponent
   ],
   imports: [
     BrowserModule,
