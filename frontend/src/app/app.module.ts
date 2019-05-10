@@ -10,6 +10,7 @@ import { BaseService } from './services/base.service';
 import { RetailerViewComponent } from './pages/retailer-view/retailer-view.component';
 import { ProductsTableComponent } from './components/products-table/products-table.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
+import { ProductViewComponent } from './pages/product-view/product-view.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
     RetailerListComponent,
     RetailerViewComponent,
     ProductsTableComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductViewComponent
   ],
   imports: [
     BrowserModule,

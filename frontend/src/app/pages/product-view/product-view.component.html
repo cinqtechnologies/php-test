@@ -1,0 +1,34 @@
+<div *ngIf="product" class="container">
+
+  <!-- Title -->
+  <div class="row">
+    <div class="col-md-12">
+      <h1><b>{{product.name}}</b> Details</h1>
+    </div>
+  </div>
+
+  <!-- Details -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <tr>
+          <th scope="row">Name</th>
+          <td>{{product.name}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Price</th>
+          <td>{{product.price}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Retailer</th>
+          <td>{{product.retailer.name}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Description</th>
+          <td>{{product.description}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
