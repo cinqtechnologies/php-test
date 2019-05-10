@@ -12,6 +12,7 @@ import { ProductsTableComponent } from './components/products-table/products-tab
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductViewComponent } from './pages/product-view/product-view.component';
 import { RetailerAddComponent } from './pages/retailer-add/retailer-add.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RetailerAddComponent } from './pages/retailer-add/retailer-add.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     BaseService,
