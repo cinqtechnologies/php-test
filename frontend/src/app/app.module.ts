@@ -11,6 +11,7 @@ import { RetailerViewComponent } from './pages/retailer-view/retailer-view.compo
 import { ProductsTableComponent } from './components/products-table/products-table.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductViewComponent } from './pages/product-view/product-view.component';
+import { RetailerAddComponent } from './pages/retailer-add/retailer-add.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductViewComponent } from './pages/product-view/product-view.componen
     RetailerViewComponent,
     ProductsTableComponent,
     ProductListComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    RetailerAddComponent
   ],
   imports: [
     BrowserModule,
