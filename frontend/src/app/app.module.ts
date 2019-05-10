@@ -7,11 +7,13 @@ import { RetailerListComponent } from './pages/retailer-list/retailer-list.compo
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RetailersService } from './services/retailers.service';
 import { BaseService } from './services/base.service';
+import { RetailerViewComponent } from './pages/retailer-view/retailer-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RetailerListComponent
+    RetailerListComponent,
+    RetailerViewComponent
   ],
   imports: [
     BrowserModule,
