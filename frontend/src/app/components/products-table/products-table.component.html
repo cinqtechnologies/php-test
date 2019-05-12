@@ -1,4 +1,4 @@
-<table *ngIf="products && products.length > 0" class="table">
+<table *ngIf="products && products.length > 0" class="table table-hover">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -8,9 +8,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let product of products">
-      <td>{{product.name}}</td>
-      <td>{{product.price}}</td>
-      <td>{{product.retailer.name}}</td>
+      <td><a title="See product details" [routerLink]="['/products', product.id]">{{product.name}}</a></td>
+      <td><a title="See product details" [routerLink]="['/products', product.id]">{{product.price}}</a></td>
+      <td><a title="Find out all products listed by this retailer" [routerLink]="['/retailers', product.retailer.id]">{{product.retailer.name}}</a></td>
     </tr>
   </tbody>
 </table>
