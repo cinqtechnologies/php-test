@@ -1,4 +1,5 @@
 <label for="retailer">Retailer</label>
-<select class="form-control" name="retailer" id="retailer">
-  <option *ngFor="let retailer of retailers" value="retailer.id">{{retailer.name}}</option>
+<select (change)="emitRetailer()" [(ngModel)]="currentRetailerId" class="form-control" name="retailer" id="retailer">
+  <option disabled value="0">Select a retailer</option>
+  <option *ngFor="let retailer of retailers" value="{{retailer.id}}">{{retailer.name}}</option>
 </select>

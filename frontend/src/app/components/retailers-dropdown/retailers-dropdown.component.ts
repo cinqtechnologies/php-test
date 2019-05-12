@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { RetailersService } from 'src/app/services/retailers.service';
 import { Retailer } from 'src/app/models/retailer.model';
 
@@ -10,8 +10,13 @@ import { Retailer } from 'src/app/models/retailer.model';
 export class RetailersDropdownComponent implements OnInit {
 
   public retailers: Retailer[];
+  public currentRetailerId: number = 0;
+  @Output()
+  public retailerSelectedEvent: EventEmitter<number> = new EventEmitter<number>();
   
-  constructor(public retailersService: RetailersService) { }
+  constructor(
+    public retailersService: RetailersService
+    ) { }
 
   ngOnInit() {
     this.fetchRetailers();
@@ -24,6 +29,10 @@ export class RetailersDropdownComponent implements OnInit {
     error => {
       console.log("Error while fetching the retailers to the dropdown");
     })
+  }
+
+  emitRetailer() {
+    this.retailerSelectedEvent.emit(this.currentRetailerId);
   }
 
 }

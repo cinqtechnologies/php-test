@@ -6,5 +6,7 @@ export class Product {
     price: number;
     image: string;
     description: string;
-    retailer: Retailer;
+    retailerId: number;    
+
+    retailer?: Retailer;
 }

@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-group">
-          <app-retailers-dropdown></app-retailers-dropdown>
+          <app-retailers-dropdown (retailerSelectedEvent)="setRetailerId($event)"></app-retailers-dropdown>
         </div>
 
         <div class="form-group">

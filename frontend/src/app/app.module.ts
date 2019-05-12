@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, EventEmitter } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,8 @@ import { RetailerAddComponent } from './pages/retailer-add/retailer-add.componen
 import { FormsModule } from '@angular/forms';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { RetailersDropdownComponent } from './components/retailers-dropdown/retailers-dropdown.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { RetailersDropdownComponent } from './components/retailers-dropdown/reta
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [
     BaseService,
