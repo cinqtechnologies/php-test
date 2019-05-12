@@ -16,7 +16,7 @@ class Retailers extends Migration
         Schema::create("retailers", function (Blueprint $table) {
            $table->increments("id")->unsigned();
            $table->string("name");
-           $table->string("logo");
+           $table->string("logo")->nullable();
            $table->text("description");
            $table->string("website");
            $table->timestamps();

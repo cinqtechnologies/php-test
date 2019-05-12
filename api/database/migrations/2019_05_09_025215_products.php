@@ -17,7 +17,7 @@ class Products extends Migration
             $table->increments("id");
             $table->string("name");
             $table->double("price");
-            $table->string("image");
+            $table->string("image")->nullable();
             $table->integer("retailerId", false, true);
             $table->text("description");
             $table->timestamps();

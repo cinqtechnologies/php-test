@@ -14,7 +14,6 @@ import { ProductViewComponent } from './pages/product-view/product-view.componen
 import { RetailerAddComponent } from './pages/retailer-add/retailer-add.component';
 import { FormsModule } from '@angular/forms';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
-import { RetailerDropdownComponent } from './components/retailer-dropdown/retailer-dropdown.component';
 import { RetailersDropdownComponent } from './components/retailers-dropdown/retailers-dropdown.component';
 
 @NgModule({
@@ -27,7 +26,6 @@ import { RetailersDropdownComponent } from './components/retailers-dropdown/reta
     ProductViewComponent,
     RetailerAddComponent,
     ProductAddComponent,
-    RetailerDropdownComponent,
     RetailersDropdownComponent
   ],
   imports: [

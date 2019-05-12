@@ -10,7 +10,6 @@ class Retailer extends BaseModel
 
         $this->rules = [
             "name" => "required",
-            "logo" => "required",
             "description" => "required",
             "website" => "required"
         ];
