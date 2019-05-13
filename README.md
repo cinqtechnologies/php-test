@@ -53,12 +53,17 @@ The final app must have:
   - An e-mail input where user can insert his/her e-mail to get a given product details sent to his/her e-mail (the e-mail may not be actually sent, but it must be generated have the delivery simulated/mocked);
 - A retailer view
   - Retailer's products and details
-- A Product create view
-- A Retailer create view
+- A Product create & edit view
+- A Retailer create & edit view
 - API endpoints that return JSONs for:
   - Product list
   - Product details
   - Retailer details and products
+- API endpoints that:
+  - Create a new product
+  - Create a new retailer
+  - Edit a given product
+  - Edit a given retailer
 
 ---
 
