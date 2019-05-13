@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/product.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-view',
@@ -11,6 +12,7 @@ import { Product } from 'src/app/models/product.model';
 export class ProductViewComponent implements OnInit {
 
   public product: Product;
+  public imagesEndpoint = environment.filesEndpoint;
   
   constructor(
     public productsService: ProductsService,
@@ -25,6 +27,7 @@ export class ProductViewComponent implements OnInit {
   loadProduct(id: number) {
     this.productsService.view('/products/'+id).subscribe(product => {
       this.product = product;
+      this.product.image = this.imagesEndpoint+'/'+product.image;
     },
     error => {
       console.log(error);
