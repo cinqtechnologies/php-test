@@ -14,16 +14,19 @@
         <div class="form-group">
           <label for="name">Name *</label>
           <input type="text" class="form-control" [(ngModel)]="retailer.name" name="name" id="name" placeholder="name">
+          <span class="text-danger" *ngIf="validationErrors.name && retailer.name.trim().length === 0">{{validationErrors.name[0]}}</span>
         </div>
 
         <div class="form-group">
           <label for="website">Website *</label>
           <input type="text" class="form-control" [(ngModel)]="retailer.website" name="website" id="website" placeholder="www.website.com">
+          <span class="text-danger" *ngIf="validationErrors.website && retailer.website.trim().length === 0">{{validationErrors.website[0]}}</span>
         </div>
         
         <div class="form-group">
           <label for="description">Description *</label>
           <textarea class="form-control" [(ngModel)]="retailer.description" name="description" id="description" placeholder="Provide some information about this retailer" rows="3"></textarea>
+          <span class="text-danger" *ngIf="validationErrors.description && retailer.description.trim().length === 0">{{validationErrors.description[0]}}</span>
         </div>
 
         <div class="form-group">
@@ -39,17 +42,6 @@
         </div>
 
       </form>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <div *ngIf="success" class="alert alert-success" role="alert">
-        Retailer saved successfully.
-      </div>
-      <div *ngIf="error" class="alert alert-danger" role="alert">
-        Error while saving the form. Please make sure you filled in all the required fields.
-      </div>
     </div>
   </div>
 

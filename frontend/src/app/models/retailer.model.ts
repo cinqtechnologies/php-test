@@ -2,9 +2,9 @@ import { Product } from './product.model';
 
 export class Retailer {
     id: number;
-    name: string;
+    name: string = "";
     logo: any;
-    description: string;
-    website: string;
+    description: string = "";
+    website: string = "";
     products?: Product[];
 }

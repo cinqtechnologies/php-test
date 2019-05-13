@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RetailersService } from 'src/app/services/retailers.service';
 import { Retailer } from 'src/app/models/retailer.model';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { FeedbackModalComponent } from 'src/app/components/feedback-modal/feedback-modal.component';
 
 @Component({
   selector: 'app-retailer-add',
@@ -11,12 +13,12 @@ import { Router } from '@angular/router';
 export class RetailerAddComponent implements OnInit {
 
   public retailer: Retailer = new Retailer();
-  public success;
-  public error;
+  public validationErrors = {};
   
   constructor(
     public retailersService: RetailersService,
-    public router: Router
+    public router: Router,
+    public modal: MatDialog
     ) { }
 
   ngOnInit() {
@@ -43,14 +45,14 @@ export class RetailerAddComponent implements OnInit {
   save() {
 
     this.retailersService.create('/retailers', this.retailer).subscribe(success => {
-      this.error = false;
-      this.success = true;
-
-      setTimeout(this.navigateToIndex.bind(this), 3000);
-
+      this.modal.open(FeedbackModalComponent, { data: { status: 'success', message: 'Retailer saved successfully!' } })
+        .afterClosed().subscribe(redirect => {
+          setTimeout(this.navigateToIndex.bind(this), 100);
+        })
     },
-    errors => {
-      this.error = true;
-    })
+      error => {
+        console.log(error);
+        this.validationErrors = error.error;
+      })
   }
 }
