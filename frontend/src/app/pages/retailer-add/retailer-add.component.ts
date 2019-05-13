@@ -22,6 +22,20 @@ export class RetailerAddComponent implements OnInit {
   ngOnInit() {
   }
 
+  setImage(event) {
+    let reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.retailer.logo = {
+          filetype: file.type,
+          value: reader.result.toString().split(',')[1]
+        }
+      };
+    }
+  }
+
   navigateToIndex() {
     this.router.navigate(['/']);
   }

@@ -1,8 +1,12 @@
 # API IGNORED FILES
-api/vendor
-api/Homestead.json
-api/Homestead.yaml
-api/.env
+/api/vendor
+/api/Homestead.json
+/api/Homestead.yaml
+/api/.env
+/api/public/*.png
+/api/public/*.jpg
+/api/public/*.jpeg
+/api/public/*.gif
 
 # FRONT-END IGNORED FILES
 # compiled output

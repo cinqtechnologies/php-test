@@ -23,6 +23,8 @@ export class ProductViewComponent implements OnInit {
     let productId = this.route.snapshot.params['id'];
     this.loadProduct(productId);
   }
+
+
   
   loadProduct(id: number) {
     this.productsService.view('/products/'+id).subscribe(product => {

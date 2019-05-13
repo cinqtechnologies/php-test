@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Lib\Image;
 use App\Models\Retailer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -38,11 +39,20 @@ class RetailersController extends Controller
 
             $retailer = new Retailer();
 
+            $imageDetails = $request->get("logo");
+
             $data = $request->only($retailer->getFillable());
 
             if(!$retailer->validate($data))
             {
                 return new JsonResponse($retailer->getErrors(), 400);
+            }
+
+            $imagePath = Image::store($imageDetails["value"], $imageDetails["filetype"]);
+
+            if($imagePath)
+            {
+                $retailer->logo = $imagePath;
             }
 
             $retailer->fill($data);
