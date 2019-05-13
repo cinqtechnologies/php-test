@@ -17,6 +17,7 @@ import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { RetailersDropdownComponent } from './components/retailers-dropdown/retailers-dropdown.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FeedbackModalComponent } from './components/feedback-modal/feedback-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProductViewComponent,
     RetailerAddComponent,
     ProductAddComponent,
-    RetailersDropdownComponent
+    RetailersDropdownComponent,
+    FeedbackModalComponent
+  ],
+  entryComponents: [
+    FeedbackModalComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,8 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   providers: [
     BaseService,
-    RetailersService
+    RetailersService,
+    MatDialogModule
   ],
   bootstrap: [AppComponent]
 })

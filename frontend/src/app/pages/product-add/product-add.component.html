@@ -13,22 +13,26 @@
 
         <div class="form-group">
           <label for="name">Name *</label>
-          <input type="text" class="form-control" [(ngModel)]="product.name" name="name" id="name" placeholder="name">
+          <input type="text" class="form-control" [(ngModel)]="product.name" name="name" id="name" placeholder="Name">
+          <span class="text-danger" *ngIf="validationErrors.name">{{validationErrors.name[0]}}</span>
         </div>
 
         <div class="form-group">
           <label for="price">Price *</label>
-          <input type="number" class="form-control" [(ngModel)]="product.price" name="price" id="price">
+          <input type="number" class="form-control" [(ngModel)]="product.price" name="price" id="price" placeholder="Price">
+          <span class="text-danger" *ngIf="validationErrors.price">{{validationErrors.price[0]}}</span>
         </div>
 
         <div class="form-group">
           <app-retailers-dropdown (retailerSelectedEvent)="setRetailerId($event)"></app-retailers-dropdown>
+          <span class="text-danger" *ngIf="validationErrors.retailerId">{{validationErrors.retailerId[0]}}</span>
         </div>
 
         <div class="form-group">
           <label for="description">Description *</label>
           <textarea class="form-control" [(ngModel)]="product.description" name="description" id="description"
             placeholder="Provide some information about this product" rows="3"></textarea>
+            <span class="text-danger" *ngIf="validationErrors.description">{{validationErrors.description[0]}}</span>
         </div>
 
         <div class="form-group">
