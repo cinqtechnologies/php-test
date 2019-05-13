@@ -1,5 +1,32 @@
 # PHP skills test
 
+## Instructions
+Download or clone the repository to a folder where you can run a php virtual server version 7.
+
+At the prompt or bash access the downloaded repository folder, and with php 7 running locally or by XAMPP, LAMP, WAMP or MAMP, start a local server by the command: php -S localhost: 8000
+
+For the database we use Mysql version 5.7.24 with phpmyadmin, the database can be imported by the folder bancodedados in the repository. Adjust the connection in the Conexao.class.php file inside the Classes folder. The Database needs to be created in UTF8.
+
+Access the system on the browser using the address localhost:8000 using the word admin for both login and password.
+
+In the Shopping menu, you can check the list of products, the page with product details, the example page of the email sent to the customer, the Retail list and the retailer details page.
+
+From the Content menu, you can manage retailer and product records.
+
+In the Adminitrative menu, you can manage the logged in user's data, and the users who will have access to the system, as well as the system access permissions and logs.
+
+To use the API, the following endpoints can be used in the browser address bar:
+1) To list all products - localhost:8000/api/produto/listarTodos
+2) To view the details of a single product - localhost:8000/api/produto/detalhesProduto/{ID}
+3) To list all retailers - localhost:8000/api/varejista/listarTodos
+4) To list all the details of a retailer and their products - localhost:8000/api/varejista/detalhesVarejista/{ID}
+
+Ex.: localhost:8000/api/produto/detalhesProduto/1
+	 localhost:8000/api/varejista/detalhesVarejista/1
+
+
+
+
 ## Objective
 The aim of this test is to evaluate the applicant skills on:
 - Basic backend concepts;
