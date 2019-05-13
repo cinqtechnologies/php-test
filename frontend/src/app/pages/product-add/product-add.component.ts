@@ -32,6 +32,20 @@ export class ProductAddComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  setImage(event) {
+    let reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.product.image = {
+          filetype: file.type,
+          value: reader.result.toString().split(',')[1]
+        }
+      };
+    }
+  }
+
   save() {
 
     this.productsService.create('/products', this.product).subscribe(success => {
@@ -41,8 +55,8 @@ export class ProductAddComponent implements OnInit {
       })
     },
     error => {
+      console.log(error);
       this.validationErrors = error.error;
     })
   }
-
 }

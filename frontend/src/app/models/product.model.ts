@@ -4,7 +4,7 @@ export class Product {
     id: number;
     name: string = "";
     price: number = 0;
-    image: string = "";
+    image: any;
     description: string = "";
     retailerId: number = 0;
 
