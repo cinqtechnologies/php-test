@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Lib\Image;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -38,11 +39,20 @@ class ProductsController extends Controller
 
             $product = new Product();
 
+            $imageDetails = $request->get("image");
+
             $data = $request->only($product->getFillable());
 
             if(!$product->validate($data))
             {
                 return new JsonResponse($product->getErrors(), 400);
+            }
+
+            $imagePath = Image::store($imageDetails["value"], $imageDetails["filetype"]);
+
+            if($imagePath)
+            {
+                $product->image = $imagePath;
             }
 
             $product->fill($data);

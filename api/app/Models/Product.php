@@ -16,9 +16,8 @@ class Product extends BaseModel
 
         $this->rules = [
             "name" => "required",
-            "price" => "required",
-            "image" => "required",
-            "retailerId" => "required",
+            "price" => "required|numeric|min:0.00001",
+            "retailerId" => "required|numeric|min:1",
             "description" => "required"
         ];
 
