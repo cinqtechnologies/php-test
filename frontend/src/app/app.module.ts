@@ -18,6 +18,7 @@ import { RetailersDropdownComponent } from './components/retailers-dropdown/reta
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FeedbackModalComponent } from './components/feedback-modal/feedback-modal.component';
+import { ProductDetailsEmailComponent } from './components/product-details-email/product-details-email.component';
 
 @NgModule({
   declarations: [
@@ -30,10 +31,12 @@ import { FeedbackModalComponent } from './components/feedback-modal/feedback-mod
     RetailerAddComponent,
     ProductAddComponent,
     RetailersDropdownComponent,
-    FeedbackModalComponent
+    FeedbackModalComponent,
+    ProductDetailsEmailComponent
   ],
   entryComponents: [
-    FeedbackModalComponent
+    FeedbackModalComponent,
+    ProductDetailsEmailComponent
   ],
   imports: [
     BrowserModule,

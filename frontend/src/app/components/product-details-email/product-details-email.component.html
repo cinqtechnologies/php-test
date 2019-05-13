@@ -1,0 +1,24 @@
+<h4>The following details will be delivered to {{data.email}} </h4>
+
+<img width="200px" height="200px" alt="Product image" src="{{data.product.image}}">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Retailer</th>
+    </tr>
+    <tr>
+      <td>{{data.product.name}}</td>
+      <td>{{data.product.description}}</td>
+      <td>{{data.product.price}}</td>
+      <td>{{data.product.retailer.name}}</td>
+    </tr>
+  </thead>
+</table>
+
+<mat-dialog-actions>
+  <button type="button" (click)="onModalClosed(true)" class="btn btn-success btn-round" mat-button [mat-dialog-close]="true">Confirm</button>
+</mat-dialog-actions>

@@ -11,7 +11,7 @@
   <div class="row">
     
     <div class="col-md-3">
-      <a title="Click to view full-sized image" href="{{product.image}}" target="_blank"><img width="200px" height="200px" alt="Product image" src="{{product.image}}"></a>
+      <a title="Click to view full-sized image" href="{{product.image}}" target="_blank"><img width="170" height="170px" alt="Product image" src="{{product.image}}"></a>
     </div>
     
     <div class="col-md-9">
@@ -34,6 +34,22 @@
         </tr>
       </table>
     </div>
+  </div>
+
+  <div id="email-wrapper" class="row">
+    <div *ngIf="emailSent===false" class="col-md-7">
+      <label for="email"> <h4>In a hurry?</h4>Fill in your email address and get this product's details in your inbox to read later.</label>
+    </div>
+    <div *ngIf="emailSent===false" class="col-md-5 text-left">
+      <input id="email" class="form-control" [(ngModel)]="emailAddress" placeholder="youremail@email.com" type="email" id="email" name="email">
+      <button type="button" (click)="sendEmail()" class="btn btn-success btn-round">Ok</button>
+      <span class="text-danger" *ngIf="emailValido===false">Please provide a valid email address</span>
+    </div>
+
+    <div class="col-md-12">
+      <h3 class="text-success" *ngIf="emailSent===true">The product details have been successfully sent to your inbox. </h3>
+    </div>
+
   </div>
 
 </div>
