@@ -14,25 +14,25 @@
         <div class="form-group">
           <label for="name">Name *</label>
           <input type="text" class="form-control" [(ngModel)]="product.name" name="name" id="name" placeholder="Name">
-          <span class="text-danger" *ngIf="validationErrors.name">{{validationErrors.name[0]}}</span>
+          <span class="text-danger" *ngIf="validationErrors.name && product.name.trim().length === 0">{{validationErrors.name[0]}}</span>
         </div>
 
         <div class="form-group">
           <label for="price">Price *</label>
           <input type="number" class="form-control" [(ngModel)]="product.price" name="price" id="price" placeholder="Price">
-          <span class="text-danger" *ngIf="validationErrors.price">{{validationErrors.price[0]}}</span>
+          <span class="text-danger" *ngIf="validationErrors.price && product.price === 0">{{validationErrors.price[0]}}</span>
         </div>
 
         <div class="form-group">
           <app-retailers-dropdown (retailerSelectedEvent)="setRetailerId($event)"></app-retailers-dropdown>
-          <span class="text-danger" *ngIf="validationErrors.retailerId">{{validationErrors.retailerId[0]}}</span>
+          <span class="text-danger" *ngIf="validationErrors.retailerId && product.retailerId === 0">You must select a retailer</span>
         </div>
 
         <div class="form-group">
           <label for="description">Description *</label>
           <textarea class="form-control" [(ngModel)]="product.description" name="description" id="description"
             placeholder="Provide some information about this product" rows="3"></textarea>
-            <span class="text-danger" *ngIf="validationErrors.description">{{validationErrors.description[0]}}</span>
+            <span class="text-danger" *ngIf="validationErrors.description && product.description.trim().length === 0">{{validationErrors.description[0]}}</span>
         </div>
 
         <div class="form-group">
@@ -42,16 +42,4 @@
       </form>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <div *ngIf="success" class="alert alert-success" role="alert">
-        Retailer saved successfully.
-      </div>
-      <div *ngIf="error" class="alert alert-danger" role="alert">
-        Error while saving the form. Please make sure you filled in all the required fields.
-      </div>
-    </div>
-  </div>
-
 </div>

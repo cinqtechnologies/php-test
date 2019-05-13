@@ -37,7 +37,7 @@ export class ProductAddComponent implements OnInit {
     this.productsService.create('/products', this.product).subscribe(success => {
       this.modal.open(FeedbackModalComponent, { data: { status: 'success', message: 'Product saved successfully!' } })
       .afterClosed().subscribe(redirect => {
-        setTimeout(this.navigateToIndex.bind(this), 1000);
+        setTimeout(this.navigateToIndex.bind(this), 100);
       })
     },
     error => {
