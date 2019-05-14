@@ -14,4 +14,4 @@ RUN npm i -g @angular/cli
 
 RUN npm install
 
-RUN nohup ng serve --prod --port 3000 &
+RUN ng serve --prod --port 3000

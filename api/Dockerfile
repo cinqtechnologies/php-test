@@ -61,7 +61,7 @@ RUN mkfifo $LOG_STREAM && chmod 777 $LOG_STREAM
 
 CMD sh -c "php-fpm -D | tail -f $LOG_STREAM"
 
-EXPOSE 8000
+EXPOSE 9000
 
 WORKDIR /var/www/application
 
@@ -75,4 +75,4 @@ RUN php artisan migrate
 
 RUN cd public
 
-RUN nohup php -S 0.0.0.0:8000 &
+RUN nohup php -S 0.0.0.0:9000 &
