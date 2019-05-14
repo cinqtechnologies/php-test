@@ -57,10 +57,6 @@ RUN apk --no-cache --update --repository http://dl-cdn.alpinelinux.org/alpine/v$
     libtool \
 && rm -rf /var/cache/apk/* /tmp/*
 
-RUN mkfifo $LOG_STREAM && chmod 777 $LOG_STREAM
-
-CMD sh -c "php-fpm -D | tail -f $LOG_STREAM"
-
 EXPOSE 9000
 
 WORKDIR /var/www/application
@@ -69,10 +65,12 @@ COPY . .
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
+RUN cd /var/www/application 
+
 RUN composer install
 
 RUN php artisan migrate
 
-RUN cd public
+RUN cd /var/www/application/public
 
-RUN nohup php -S 0.0.0.0:9000 &
+ENTRYPOINT php -S 0.0.0.0:9000

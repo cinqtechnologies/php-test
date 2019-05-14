@@ -21,3 +21,4 @@ The application is set to work within a docker cluster, whereas each service is 
 -- DB_DATABASE=
 -- DB_USERNAME=
 -- DB_PASSWORD=
+- There is no need to import a databse schema. This is automatically handled by the migration script, which is run upon the container creation.

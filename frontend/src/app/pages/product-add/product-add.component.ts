@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class ProductAddComponent implements OnInit {
 
   public product: Product = new Product();
-  public validationErrors: any = {};
+  public validationErrors: any = {name: null, price: null, retailerId: null, description: null};
   
   constructor(
     public productsService: ProductsService,

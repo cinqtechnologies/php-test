@@ -14,4 +14,4 @@ RUN npm i -g @angular/cli
 
 RUN npm install
 
-RUN ng serve --prod --port 3000
+ENTRYPOINT ng serve --host 0.0.0.0 --port 3000 --prod
