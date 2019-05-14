@@ -1,9 +1,3 @@
-# MYSQL CONTAINER
-#
-#
-FROM mysql:5.7.26
-EXPOSE 3306
-
 # COMPOSER INTERMEDIATE CONTAINER
 #
 #
@@ -71,7 +65,7 @@ EXPOSE 8000
 
 WORKDIR /var/www/application
 
-COPY api .
+COPY . .
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
@@ -82,21 +76,3 @@ RUN php artisan migrate
 RUN cd public
 
 RUN nohup php -S 0.0.0.0:8000 &
-
-# ANGULAR CONTAINER
-#
-#
-
-FROM node:10.15.3-stretch
-
-EXPOSE 3000
-
-WORKDIR /var/www/application
-
-COPY frontend .
-
-RUN npm i -g @angular/cli
-
-RUN npm install
-
-RUN nohup ng serve --prod --port 3000 &

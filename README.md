@@ -1,6 +1,11 @@
 # PHP skills test
 
-## Objective
+This solution is composed of three service layers:
+- Back-end RESTful API built in PHP 7.2 with Lumen
+- Front-end Javascript application build with Angular 7
+- Data storage with MySQL 5.7 
+
+## Requirements
 The aim of this test is to evaluate the applicant skills on:
 - Basic backend concepts;
 - Database queries;
