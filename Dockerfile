@@ -1,3 +1,9 @@
+# MYSQL CONTAINER
+#
+#
+FROM mysql:5.7.26
+EXPOSE 3306
+
 # COMPOSER INTERMEDIATE CONTAINER
 #
 #
@@ -10,18 +16,8 @@ FROM composer:1.5.1 AS composer
 
 FROM php:7.2.18-fpm-alpine
 
-# PHP
-#ADD ./logging.ini /usr/local/etc/php/conf.d
-#ADD ./lumen.ini /usr/local/etc/php/conf.d
-
-# PHP-FPM
-#ADD ./lumen.pool.conf /usr/local/etc/php-fpm.d
-#RUN rm /usr/local/etc/php-fpm.d/www.conf*
-
 # Environment variables
 ENV ALPINE_VERSION 3.4
-ENV IMAGICK_VERSION=3.4.3
-# ENV AMQP_VERSION=1.8.0
 ENV LOG_STREAM="/tmp/stdout"
 
 # Install & clean up dependencies
@@ -42,38 +38,25 @@ RUN apk --no-cache --update --repository http://dl-cdn.alpinelinux.org/alpine/v$
     libpng-dev \
     libjpeg-turbo \
     libjpeg-turbo-dev \
-    imagemagick-dev \
-    imagemagick \
 && apk --no-cache --update --repository http://dl-3.alpinelinux.org/alpine/v3.5/community/ add \
     php7-gd \
-    php7-sockets \
     php7-zlib \
     php7-intl \
-    php7-opcache \
     php7-bcmath \
 && docker-php-ext-configure intl \
 && docker-php-ext-configure gd \
     --with-png-dir=/usr/include/ \
     --with-jpeg-dir=/usr/include/ \
-&& pecl install \
-    imagick-$IMAGICK_VERSION \
-    # amqp-$AMQP_VERSION \
 && docker-php-ext-install \
     pdo_mysql \
-    sockets \
     gd \
     intl \
-    opcache \
     bcmath \
-&& docker-php-ext-enable \
-    imagick \
-    # amqp \
 && apk --no-cache del \
     wget \
     icu-dev \
     libpng-dev \
     libjpeg-turbo-dev \
-    imagemagick-dev \
     tar \
     autoconf \
     build-base \
@@ -93,6 +76,8 @@ COPY api .
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN composer install
+
+RUN php artisan migrate
 
 RUN cd public
 
@@ -114,4 +99,4 @@ RUN npm i -g @angular/cli
 
 RUN npm install
 
-RUN ng serve --prod --port 3000
+RUN nohup ng serve --prod --port 3000 &
