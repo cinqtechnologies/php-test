@@ -43,11 +43,70 @@ The REST API base URL is **http://localhost:9000/api/v1**
 List all available retailers
 ```
 GET /retailers
+
+Returns:
+
+200(OK)
+[
+    {
+        "id": 1,
+        "name": "Walmart",
+        "logo": null,
+        "description": "Walmart Stores",
+        "website": "www.walmart.com",
+        "created_at": "2019-05-15 17:24:39",
+        "updated_at": "2019-05-15 17:24:39"
+    },
+    {
+        "id": 2,
+        "name": "Pepsi",
+        "logo": null,
+        "description": "Pepsi Company",
+        "website": "www.pepsi.com",
+        "created_at": "2019-05-15 17:35:53",
+        "updated_at": "2019-05-15 17:35:53"
+    }
+]
 ```
 
 View details of a retailer by ID
 ```
 GET /retailers/{id}
+
+Returns:
+
+200(OK)
+{
+    "id": 1,
+    "name": "Walmart",
+    "logo": null,
+    "description": "Walmart Stores",
+    "website": "www.walmart.com",
+    "created_at": "2019-05-15 17:24:39",
+    "updated_at": "2019-05-15 17:24:39",
+    "products": [
+        {
+            "id": 1,
+            "name": "Walmart",
+            "price": 12.95,
+            "image": null,
+            "retailerId": 1,
+            "description": "Walmart Stores",
+            "created_at": "2019-05-15 17:28:02",
+            "updated_at": "2019-05-15 17:28:02"
+        },
+        {
+            "id": 2,
+            "name": "Smartphone",
+            "price": 99.5,
+            "image": null,
+            "retailerId": 1,
+            "description": "LG Smartphone",
+            "created_at": "2019-05-15 17:30:39",
+            "updated_at": "2019-05-15 17:30:39"
+        }
+    ]
+}
 ```
 
 Create a new retailer
