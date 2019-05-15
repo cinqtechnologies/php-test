@@ -1,0 +1,19 @@
+version: '3'
+services:
+  php:
+    build: ./api
+    ports:
+      - "9000:9000"
+    networks: 
+      - principal
+  angular:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    networks: 
+    - principal
+    depends_on:
+    - php
+networks:
+  principal:
+    driver: bridge

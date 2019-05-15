@@ -1,76 +1,285 @@
-# PHP skills test
+# Overview
+This solution is composed of three service layers:
+- Back-end RESTful API built in PHP 7.2 with Lumen
+- Front-end Javascript application built with Javascript/Angular 7
+- External MySQL 5.7 database
 
-## Objective
-The aim of this test is to evaluate the applicant skills on:
-- Basic backend concepts;
-- Database queries;
-- Data manipulation and treatment;
-- MVC concept for a back + front end application
-- API building concepts
-- Code structure and organization
+## Contact Info
 
----
+### Marco Antonio da Silva Moura ###
+- marco.moura@fatec.sp.gov.br
+- +55 41 998 168 126
+- http://linkedin.com/in/mouram
 
-## How to start and send us the test
-- Fork this repository
-- Create a branch with your name-surname as its name (e.i. john-doe)
-- Develop the test
-- Create a pull request to this repo on the master branch with your code.
+## Infrastructure
+The application is set to work within a docker cluster, whereas each service is inside their own container, except for the database. The cluster is bootstrapped with Docker-Compose.
 
----
+## Requirements
+- Docker
+- Docker-compose (supporting file version 3.0 or higher)
+- MySQL 5.7 database
 
-## Basic Guidelines
-For this test you are developing a small e-commerce app. The app must have just a list of products. The products must display the following:
+## Instructions
+- Clone this repository
+- Copy the .env.example file located in the api folder, renaming it to .env
+- Due to several issues I found while trying to reference a MySQL container within my cluster, which are potentially related to my Docker runtime installation, I've takem the decision to create a development instance on Amazon RDS instead. For your convenience, I'm disclosing its credentials below, which I wouldn't, naturally, do in a real-case scenario.
+    - Address: ecommerce.cnc0cefnqksq.sa-east-1.rds.amazonaws.com
+    - Username: root
+    - Password: Coca-Cola1
+    - Port: 3306
+    - Default Schema: ecommerce
+- Fill in the following variables of the .env file with the database name, address, username and password:
+    - DB_HOST=your-database-address
+    - DB_PORT=database-port
+    - DB_DATABASE=database-name
+    - DB_USERNAME=database-username
+    - DB_PASSWORD=database-password 
 
-- Name
-- Price
-- One Image
-- Retailer name
-- Description
+- There is no need to import a database schema. This is automatically handled by the migration script, which is run upon container creation.
+- Finally, being at the root of the repository directory, where the docker-compose.yml file is located, run the following command in your bash: 
+```
+docker-compose up -d --build 
+```
+That should compile both the back-end and front-end applications, generate the database schema, and serve the applications. **Please note that this will NOT produce data seeds (fake data)**.
 
-Also, the user must be able to click on any retailer name, and filter the product list to show only the selected retailer's products alongside with the retailer's details. The retailer must have the following details:
-- Name
-- Logo (image)
-- Description
-- Website
+## API Reference
+The REST API base URL is **http://localhost:9000/api/v1**
 
----
+### Retailers
+List all available retailers
+```
+GET /retailers
 
-## Additional Guidelines
+Returns:
 
-The main ideia of this test is to understand how your logical thinkin works when deciding how to implement some generic requirements. Considering that, you may:
-- Use any framework you feel confortable with;
-- Use any database you feel confortable with;
+200(OK)
+[
+    {
+        "id": 1,
+        "name": "Walmart",
+        "logo": null,
+        "description": "Walmart Stores",
+        "website": "www.walmart.com",
+        "created_at": "2019-05-15 17:24:39",
+        "updated_at": "2019-05-15 17:24:39"
+    },
+    {
+        "id": 2,
+        "name": "Pepsi",
+        "logo": null,
+        "description": "Pepsi Company",
+        "website": "www.pepsi.com",
+        "created_at": "2019-05-15 17:35:53",
+        "updated_at": "2019-05-15 17:35:53"
+    }
+]
+```
 
-Keep in mind that we may contact you to ask you some question about your test, regarding how and why you took a given decision when developing the app for this test.
+View details of a retailer by ID
+```
+GET /retailers/{id}
 
----
+Returns:
 
-## Basic Requirements
-The final app must have:
-- A product list view;
-- A single product view
-  - An e-mail input where user can insert his/her e-mail to get a given product details sent to his/her e-mail (the e-mail may not be actually sent, but it must be generated have the delivery simulated/mocked);
-- A retailer view
-  - Retailer's products and details
-- A Product create view
-- A Retailer create view
-- API endpoints that return JSONs for:
-  - Product list
-  - Product details
-  - Retailer details and products
+200(OK)
+{
+    "id": 1,
+    "name": "Walmart",
+    "logo": null,
+    "description": "Walmart Stores",
+    "website": "www.walmart.com",
+    "created_at": "2019-05-15 17:24:39",
+    "updated_at": "2019-05-15 17:24:39",
+    "products": [
+        {
+            "id": 1,
+            "name": "Walmart",
+            "price": 12.95,
+            "image": null,
+            "retailerId": 1,
+            "description": "Walmart Stores",
+            "created_at": "2019-05-15 17:28:02",
+            "updated_at": "2019-05-15 17:28:02"
+        },
+        {
+            "id": 2,
+            "name": "Smartphone",
+            "price": 99.5,
+            "image": null,
+            "retailerId": 1,
+            "description": "LG Smartphone",
+            "created_at": "2019-05-15 17:30:39",
+            "updated_at": "2019-05-15 17:30:39"
+        }
+    ]
+}
+```
 
----
+Create a new retailer
+```
+POST /retailers
+{
+	"name": "Walmart",
+	"description": "Walmart Stores",
+	"website": "www.walmart.com"
+}
 
-## Additional Requirements
-When you finish the test app, you must:
-- Provide a README.md with:
-  - Instructions how to make your app work with a database (schema name, ENV variables to set, username and password, etc.);
-  - The API endpoints and the application URL for the server-side rendered views;
-- Code a build command that will build your code and prepare a mock server to test it.
-- Push your code to a github repository and give [cinqtechnologies](https://github.com/cinqtechnologies/) access to it;
+Returns:
 
----
+200(OK)
+{
+    "name": "Walmart",
+    "description": "Walmart Stores",
+    "website": "www.walmart.com",
+    "updated_at": "2019-05-15 17:24:39",
+    "created_at": "2019-05-15 17:24:39",
+    "id": 1
+}
+```
 
-## Pluses
-- Unit tests
+### Products
+
+List all available products
+```
+GET /products
+GET /products?retailerId={id} [optional parameter]
+
+Returns:
+
+200(OK)
+[
+    {
+        "id": 1,
+        "name": "Walmart",
+        "price": 12.95,
+        "image": null,
+        "retailerId": 1,
+        "description": "Walmart Stores",
+        "created_at": "2019-05-15 17:28:02",
+        "updated_at": "2019-05-15 17:28:02",
+        "retailer": {
+            "id": 1,
+            "name": "Walmart",
+            "logo": null,
+            "description": "Walmart Stores",
+            "website": "www.walmart.com",
+            "created_at": "2019-05-15 17:24:39",
+            "updated_at": "2019-05-15 17:24:39"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Smartphone",
+        "price": 99.5,
+        "image": null,
+        "retailerId": 1,
+        "description": "LG Smartphone",
+        "created_at": "2019-05-15 17:30:39",
+        "updated_at": "2019-05-15 17:30:39",
+        "retailer": {
+            "id": 1,
+            "name": "Walmart",
+            "logo": null,
+            "description": "Walmart Stores",
+            "website": "www.walmart.com",
+            "created_at": "2019-05-15 17:24:39",
+            "updated_at": "2019-05-15 17:24:39"
+        }
+    }
+]
+```
+
+View details of a product by ID
+```
+GET /products/{id}
+
+Returns:
+
+200(OK)
+{
+    "id": 2,
+    "name": "Smartphone",
+    "price": 99.5,
+    "image": null,
+    "retailerId": 1,
+    "description": "LG Smartphone",
+    "created_at": "2019-05-15 17:30:39",
+    "updated_at": "2019-05-15 17:30:39",
+    "retailer": {
+        "id": 1,
+        "name": "Walmart",
+        "logo": null,
+        "description": "Walmart Stores",
+        "website": "www.walmart.com",
+        "created_at": "2019-05-15 17:24:39",
+        "updated_at": "2019-05-15 17:24:39"
+    }
+}
+```
+
+Create a new product
+```
+POST /retailers/{id}
+{
+	"name": "Smartphone",
+	"description": "LG Smartphone",
+	"retailerId": 1,
+	"price": 99.50
+}
+
+Returns:
+
+200(OK)
+{
+    "name": "Smartphone",
+    "price": 99.5,
+    "retailerId": 1,
+    "description": "LG Smartphone",
+    "updated_at": "2019-05-15 17:30:39",
+    "created_at": "2019-05-15 17:30:39",
+    "id": 2
+}
+```
+
+## Front-End Reference
+
+The base URL is: **http://localhost:3000**
+
+#### Retailers
+
+List all
+```
+There is no retailer List page. They are only listed at the dropdown available in the "Add Product" form.
+```
+
+Create a new retailer
+```
+/retailers/add
+```
+
+View a retailer
+```
+/retailers/{id}
+```
+
+### Products
+
+List all
+```
+/products
+```
+
+or simply
+```
+/
+```
+
+Create a new product
+```
+/products/add
+```
+
+View a product
+```
+/products/{id}
+```

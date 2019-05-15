@@ -13,7 +13,7 @@ import { FeedbackModalComponent } from 'src/app/components/feedback-modal/feedba
 export class RetailerAddComponent implements OnInit {
 
   public retailer: Retailer = new Retailer();
-  public validationErrors = {};
+  public validationErrors = {name: null, retailer: null, description: null, website: null};
   
   constructor(
     public retailersService: RetailersService,
