@@ -1,27 +1,176 @@
 # Overview
 This solution is composed of three service layers:
 - Back-end RESTful API built in PHP 7.2 with Lumen
-- Front-end Javascript application build with Angular 7
+- Front-end Javascript application built with Javascript/Angular 7
 - External MySQL 5.7 database
 
 ## Infrastructure
-The application is set to work within a docker cluster, whereas each service is inside their own container, except for the database. The cluster is bootstrapped with Docker-Compose tool.
+The application is set to work within a docker cluster, whereas each service is inside their own container, except for the database. The cluster is bootstrapped with Docker-Compose.
 
 ## Requirements
 - Docker
-- Docker-compose (supporting file version 3.0^)
+- Docker-compose (supporting file version 3.0 or higher)
 - MySQL 5.7 database
 
 ## Instructions
 - Clone this repository
 - Copy the .env.example file located in the api folder, renaming it to .env
 - Fill in the following variables with your database name, address, username and password:
--- DB_HOST=
--- DB_PORT=
--- DB_DATABASE=
--- DB_USERNAME=
--- DB_PASSWORD=
+    - DB_HOST=your-database-address
+    - DB_PORT=database-port
+    - DB_DATABASE=database-name
+    - DB_USERNAME=database-username
+    - DB_PASSWORD=database-password
+
+PLEASE NOTE: If you intend to connect to a database running in your local machine, you'll need to do some tweaks in the docker network the containers are connected to, in order for PHP to see the database. If you're running it in a docker container, it should be as simple as pluging it into the network: 
+
+```
+docker network connect amechant_principal database-container
+```
+
 - There is no need to import a databse schema. This is automatically handled by the migration script, which is run upon container creation.
-- Finally, being at the root of the repository directory, where the docker-compose.yml file is located, run the following command in your bash: docker-compose up -d --build. This should compile both the back-end and front-end applications, generate the database schema, and serve the applications.
-- The RESTful API is served at localhost:9000/pi/v1
-- The front-end is served at localhost:3000
+- Finally, being at the root of the repository directory, where the docker-compose.yml file is located, run the following command in your bash: 
+```
+docker-compose up -d --build 
+```
+That should compile both the back-end and front-end applications, generate the database schema, and serve the applications. Please note that this will not produce data seeds.
+
+## Endpoints
+### API 
+The REST API base URL is **http://localhost:9000/api/v1**
+
+#### Retailers
+List all available retailers
+```
+GET /retailers
+```
+
+View details of a retailer by ID
+```
+GET /retailers/{id}
+```
+
+Create a new retailer
+```
+POST /retailers
+{
+	"name": "Walmart",
+	"description": "Walmart Stores",
+	"website": "www.walmart.com"
+}
+
+Returns:
+
+200(OK)
+{
+    "name": "Walmart",
+    "description": "Walmart Stores",
+    "website": "www.walmart.com",
+    "updated_at": "2019-05-15 17:24:39",
+    "created_at": "2019-05-15 17:24:39",
+    "id": 1
+}
+```
+
+#### Products
+
+List all available products
+```
+GET /products
+
+Returns:
+
+200(OK)
+[
+    {
+        "id": 1,
+        "name": "Walmart",
+        "price": 12.95,
+        "image": null,
+        "retailerId": 1,
+        "description": "Walmart Stores",
+        "created_at": "2019-05-15 17:28:02",
+        "updated_at": "2019-05-15 17:28:02",
+        "retailer": {
+            "id": 1,
+            "name": "Walmart",
+            "logo": null,
+            "description": "Walmart Stores",
+            "website": "www.walmart.com",
+            "created_at": "2019-05-15 17:24:39",
+            "updated_at": "2019-05-15 17:24:39"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Smartphone",
+        "price": 99.5,
+        "image": null,
+        "retailerId": 1,
+        "description": "LG Smartphone",
+        "created_at": "2019-05-15 17:30:39",
+        "updated_at": "2019-05-15 17:30:39",
+        "retailer": {
+            "id": 1,
+            "name": "Walmart",
+            "logo": null,
+            "description": "Walmart Stores",
+            "website": "www.walmart.com",
+            "created_at": "2019-05-15 17:24:39",
+            "updated_at": "2019-05-15 17:24:39"
+        }
+    }
+]
+```
+
+View details of a product by ID
+```
+GET /products/{id}
+
+Returns:
+
+200(OK)
+{
+    "id": 2,
+    "name": "Smartphone",
+    "price": 99.5,
+    "image": null,
+    "retailerId": 1,
+    "description": "LG Smartphone",
+    "created_at": "2019-05-15 17:30:39",
+    "updated_at": "2019-05-15 17:30:39",
+    "retailer": {
+        "id": 1,
+        "name": "Walmart",
+        "logo": null,
+        "description": "Walmart Stores",
+        "website": "www.walmart.com",
+        "created_at": "2019-05-15 17:24:39",
+        "updated_at": "2019-05-15 17:24:39"
+    }
+}
+```
+
+Create a new product
+```
+POST /retailers/{id}
+{
+	"name": "Smartphone",
+	"description": "LG Smartphone",
+	"retailerId": 1,
+	"price": 99.50
+}
+
+Returns:
+
+200(OK)
+{
+    "name": "Smartphone",
+    "price": 99.5,
+    "retailerId": 1,
+    "description": "LG Smartphone",
+    "updated_at": "2019-05-15 17:30:39",
+    "created_at": "2019-05-15 17:30:39",
+    "id": 2
+}
+```
