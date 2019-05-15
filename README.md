@@ -22,7 +22,7 @@ The application is set to work within a docker cluster, whereas each service is 
 ## Instructions
 - Clone this repository
 - Copy the .env.example file located in the api folder, renaming it to .env
-- Due to several issues I found while trying to reference a MySQL container within my cluster, which are potentially related to my Docker runtime installation, I've takem the decision to create a development instance on Amazon RDS instead. For your convenience, I'm disclosing its credentials below, which I wouldn't, naturally, do in a real-case scenario.
+- Due to several issues I found while trying to reference a MySQL container within my cluster, which are potentially related to my Docker runtime installation, I've taken the decision to create a development instance on Amazon RDS instead. For your convenience, I'm disclosing its credentials below, which I wouldn't, naturally, do in a real-case scenario.
     - Address: ecommerce.cnc0cefnqksq.sa-east-1.rds.amazonaws.com
     - Username: root
     - Password: Coca-Cola1
@@ -219,7 +219,7 @@ Returns:
 
 Create a new product
 ```
-POST /retailers/{id}
+POST /products
 {
 	"name": "Smartphone",
 	"description": "LG Smartphone",
