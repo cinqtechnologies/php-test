@@ -58,12 +58,11 @@ $app->singleton(
 */
 
  $app->middleware([
-     \Barryvdh\Cors\HandleCors::class
-//     App\Http\Middleware\ExampleMiddleware::class,
+     App\Http\Middleware\ExampleMiddleware::class
  ]);
 
 // $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
+//     'cors' => App\Http\Middleware\CorsMiddleware::class,
 // ]);
 
 /*

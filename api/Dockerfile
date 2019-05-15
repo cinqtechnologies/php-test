@@ -65,12 +65,10 @@ COPY . .
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-RUN cd /var/www/application 
+RUN cd /var/www/application
 
 RUN composer install
 
 RUN php artisan migrate
 
-RUN cd /var/www/application/public
-
-ENTRYPOINT php -S 0.0.0.0:9000
+ENTRYPOINT cd /var/www/application/public && php -S 0.0.0.0:9000

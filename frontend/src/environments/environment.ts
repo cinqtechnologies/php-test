@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'http://amechant_php_1/api/v1',
-  filesEndpoint: 'http://amechant_php_1'
+  apiEndpoint: 'http://localhost/api/v1',
+  filesEndpoint: 'http://localhost'
 };
 
 /*

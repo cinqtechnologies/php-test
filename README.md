@@ -21,4 +21,7 @@ The application is set to work within a docker cluster, whereas each service is 
 -- DB_DATABASE=
 -- DB_USERNAME=
 -- DB_PASSWORD=
-- There is no need to import a databse schema. This is automatically handled by the migration script, which is run upon the container creation.
+- There is no need to import a databse schema. This is automatically handled by the migration script, which is run upon container creation.
+- Finally, being at the root of the repository directory, where the docker-compose.yml file is located, run the following command in your bash: docker-compose up -d --build. This should compile both the back-end and front-end applications, generate the database schema, and serve the applications.
+- The RESTful API is served at localhost:9000/pi/v1
+- The front-end is served at localhost:3000
