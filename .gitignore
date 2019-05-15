@@ -1,0 +1,59 @@
+# API IGNORED FILES
+/api/vendor
+/api/Homestead.json
+/api/Homestead.yaml
+/api/.env
+/api/public/*.png
+/api/public/*.jpg
+/api/public/*.jpeg
+/api/public/*.gif
+
+/api/public/images/*.png
+/api/public/images/*.jpg
+/api/public/images/*.jpeg
+/api/public/images/*.gif
+
+# FRONT-END IGNORED FILES
+# compiled output
+frontend/dist
+frontend/tmp
+frontend/out-tsc
+
+# GENERAL IGNORED FILES
+# dependencies
+frontend/node_modules
+
+# profiling files
+frontend/chrome-profiler-events.json
+frontend/speed-measure-plugin.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
