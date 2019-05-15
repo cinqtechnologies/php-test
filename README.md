@@ -4,6 +4,13 @@ This solution is composed of three service layers:
 - Front-end Javascript application built with Javascript/Angular 7
 - External MySQL 5.7 database
 
+## Contact Info
+
+### Marco Antonio da Silva Moura ###
+- marco.moura@fatec.sp.gov.br
+- +55 41 998 168 126
+- http://linkedin.com/in/mouram
+
 ## Infrastructure
 The application is set to work within a docker cluster, whereas each service is inside their own container, except for the database. The cluster is bootstrapped with Docker-Compose.
 
@@ -15,31 +22,30 @@ The application is set to work within a docker cluster, whereas each service is 
 ## Instructions
 - Clone this repository
 - Copy the .env.example file located in the api folder, renaming it to .env
-- Fill in the following variables with your database name, address, username and password:
+- Due to several issues I found while trying to reference a MySQL container within my cluster, which are potentially related to my Docker runtime installation, I've takem the decision to create a development instance on Amazon RDS instead. For your convenience, I'm disclosing its credentials below, which I wouldn't, naturally, do in a real-case scenario.
+    - Address: ecommerce.cnc0cefnqksq.sa-east-1.rds.amazonaws.com
+    - Username: root
+    - Password: Coca-Cola1
+    - Port: 3306
+    - Default Schema: ecommerce
+- Fill in the following variables of the .env file with the database name, address, username and password:
     - DB_HOST=your-database-address
     - DB_PORT=database-port
     - DB_DATABASE=database-name
     - DB_USERNAME=database-username
-    - DB_PASSWORD=database-password
+    - DB_PASSWORD=database-password 
 
-PLEASE NOTE: If you intend to connect to a database running in your local machine, you'll need to do some tweaks in the docker network the containers are connected to, in order for PHP to see the database. If you're running it in a docker container, it should be as simple as pluging it into the network: 
-
-```
-docker network connect amechant_principal database-container
-```
-
-- There is no need to import a databse schema. This is automatically handled by the migration script, which is run upon container creation.
+- There is no need to import a database schema. This is automatically handled by the migration script, which is run upon container creation.
 - Finally, being at the root of the repository directory, where the docker-compose.yml file is located, run the following command in your bash: 
 ```
 docker-compose up -d --build 
 ```
-That should compile both the back-end and front-end applications, generate the database schema, and serve the applications. Please note that this will not produce data seeds.
+That should compile both the back-end and front-end applications, generate the database schema, and serve the applications. **Please note that this will NOT produce data seeds (fake data)**.
 
-## Endpoints
-### API 
+## API Reference
 The REST API base URL is **http://localhost:9000/api/v1**
 
-#### Retailers
+### Retailers
 List all available retailers
 ```
 GET /retailers
@@ -131,11 +137,12 @@ Returns:
 }
 ```
 
-#### Products
+### Products
 
 List all available products
 ```
 GET /products
+GET /products?retailerId={id} [optional parameter]
 
 Returns:
 
@@ -232,4 +239,47 @@ Returns:
     "created_at": "2019-05-15 17:30:39",
     "id": 2
 }
+```
+
+## Front-End Reference
+
+The base URL is: **http://localhost:3000**
+
+#### Retailers
+
+List all
+```
+There is no retailer List page. They are only listed at the dropdown available in the "Add Product" form.
+```
+
+Create a new retailer
+```
+/retailers/add
+```
+
+View a retailer
+```
+/retailers/{id}
+```
+
+### Products
+
+List all
+```
+/products
+```
+
+or simply
+```
+/
+```
+
+Create a new product
+```
+/products/add
+```
+
+View a product
+```
+/products/{id}
 ```
