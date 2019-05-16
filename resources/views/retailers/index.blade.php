@@ -35,7 +35,11 @@ Products</div>
 							<td class="text-center">{{$retail->Name}}</td>
 							<td class="text-center"><i class="fas fa-image"></i></td>
 							<td class="text-center">{{$retail->Website}}</td>							
-							<td class="text-center"><a class="btn btn-warning"
+							<td class="text-center">
+							<a class="btn btn-primary"
+								style="color: white;"
+								href="{{route('store.indexWithRetailer', ['id' => $retail->id])}}">View As Retailer</a>
+							<a class="btn btn-warning"
 								style="color: white;"
 								href="{{route('retail.editScreen', ['id' => $retail->id])}}">Editar</a>
 								<a class="btn btn-danger" style="color: white;"

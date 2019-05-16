@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SbAdmin</title>
+<title>CINQ PHP Test</title>
 
 <!-- Custom fonts for this template-->
 <link href="/sbAdmin/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">

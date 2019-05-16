@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\retailers;
+use Illuminate\Http\Request;
+use App\Models\product;
 
-class RetailerController extends Controller
+class storeViewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +15,20 @@ class RetailerController extends Controller
      */
     public function index()
     {
-        $retailer = retailers::all();
-        
-        return view('retailers.index', ['retailer' => $retailer]);
-    }   
+        return view('storeViews.indexRetailer');
+    }
     
+    /**
+     * Display a listing of the resource with the selected Retailer.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexWithRetailer($id){
+        $retailer = retailers::find($id);
+        $produtosRetailer = product::where('idRetailer', $id)->get();
+        return view('storeViews.indexSelectedRetailer', ['retailer' => $retailer, 'produtos' => $produtosRetailer]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +36,7 @@ class RetailerController extends Controller
      */
     public function create()
     {
-        return view('retailers.novo');
+        //
     }
 
     /**
@@ -37,16 +47,7 @@ class RetailerController extends Controller
      */
     public function store(Request $request)
     {
-        $retailer = new retailers;
-        
-        $retailer->Name = $request->inputName;
-        $retailer->LogoPath = $request->inputPrice;
-        $retailer->Description = $request->inputDescription;
-        $retailer->Website = $request->inputImagePath;
-        
-        $retailer->save();
-        
-        return redirect()->route('retail.index');
+        //
     }
 
     /**
@@ -91,9 +92,6 @@ class RetailerController extends Controller
      */
     public function destroy($id)
     {
-        $retailer = retailers::find($id);
-        $retailer->delete();
-        
-        return redirect()->route('retail.index');
+        //
     }
 }

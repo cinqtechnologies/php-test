@@ -17,6 +17,10 @@
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Retailer:</h6>
           <a class="dropdown-item" href="{{route('retail.index')}}">Index</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Store:</h6>
+          <a class="dropdown-item" href="{{route('store.index')}}">Index</a>
+          
         </div>
       </li>
       <li class="nav-item dropdown">
