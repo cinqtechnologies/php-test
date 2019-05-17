@@ -12,6 +12,27 @@
 
 <!-- Custom styles for this template-->
 <link rel="stylesheet" href="/sbAdmin/css/sb-admin.css" />
+
+<style>
+
+#preview{
+	position:absolute;
+	border:1px solid #ccc;
+	background:#333;
+	padding:5px;
+	display:none;
+	color:#fff;
+	max-width: 200px;
+	max-height: 200px;
+	}
+	
+#imagem{
+    max-width: 180px;
+	max-height: 200px;
+}
+
+</style>
+
 </head>
 <body id="page-top">
     <section class="barranav">
@@ -37,7 +58,7 @@
 	<script src="/sbAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Page level plugin JavaScript-->
-	<script src="/sbAdmin/vendor/chart.js/Chart.min.js"></script>
+	<!-- <script src="/sbAdmin/vendor/chart.js/Chart.min.js"></script> -->
 	<script src="/sbAdmin/vendor/datatables/jquery.dataTables.js"></script>
 	<script src="/sbAdmin/vendor/datatables/dataTables.bootstrap4.js"></script>
 
@@ -51,6 +72,9 @@
 	<!-- jquery.Mask-->
 	<script src="/js/jquery.mask.js"></script>
 	<script src="/js/masks.js"></script>
+
+	<!-- hover Preview -->
+	<script src="/js/hoverTooltip.js"></script>
 
 </body>
 </html>

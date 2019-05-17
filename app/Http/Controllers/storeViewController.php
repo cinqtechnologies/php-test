@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\retailers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\product;
 
 class storeViewController extends Controller
@@ -30,13 +31,34 @@ class storeViewController extends Controller
     }
 
     /**
+     * Display a page containing product details.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function productDetail($id){
+        $produto = product::where('id', $id)->first();
+        return view('storeViews.productDetail', ['product' => $produto]);
+    }
+    
+    /**
+     * Display a message about an email sent with product details.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function fakemail(Request $request, $id){
+        Session::flash('success_msg', 'Details sent to: '.$request->email);
+        $produto = product::where('id', $id)->first();
+        return view('storeViews.productDetail', ['product' => $produto]);
+    }
+    
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('storeViews.productDetail');
     }
 
     /**

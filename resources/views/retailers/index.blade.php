@@ -1,6 +1,7 @@
 @extends('tema.layoutBase')
 @section('conteudo')
-<div class="col-md-12">
+
+<div class="col-md-12" id="pagecont">
 <!-- DataTables Example -->
 <div class="card mb-3">
 <div class="form-group">
@@ -33,17 +34,17 @@ Products</div>
 						<tr>
 							<td class="text-center">{{$retail->id}}</td>
 							<td class="text-center">{{$retail->Name}}</td>
-							<td class="text-center"><i class="fas fa-image"></i></td>
+							<td class="text-center"><a href="/imagens/retailersLogo/{{$retail->LogoPath}}" class="preview"><i class="fas fa-image"></i></a></td>
 							<td class="text-center">{{$retail->Website}}</td>							
 							<td class="text-center">
 							<a class="btn btn-primary"
 								style="color: white;"
-								href="{{route('store.indexWithRetailer', ['id' => $retail->id])}}">View As Retailer</a>
+								href="{{route('store.indexWithRetailer', ['id' => $retail->id])}}">Store</a>
 							<a class="btn btn-warning"
 								style="color: white;"
-								href="{{route('retail.editScreen', ['id' => $retail->id])}}">Editar</a>
+								href="{{route('retail.editScreen', ['id' => $retail->id])}}">Edit</a>
 								<a class="btn btn-danger" style="color: white;"
-								href="{{route('retail.delete', ['id' => $retail->id])}}">Excluir</a>
+								href="{{route('retail.delete', ['id' => $retail->id])}}">Remove</a>
 							</td>
 						</tr>
 						@endforeach @else

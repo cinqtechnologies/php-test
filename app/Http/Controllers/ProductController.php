@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Models\product;
 use App\Models\retailers;
 
@@ -42,14 +43,29 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new product;
+        $dados = $request->all();
         
         $product->Name = $request->inputName;
         $product->Price = $request->inputPrice;
         $product->Description = $request->inputDescription;
-        $product->ImagePath = $request->inputImagePath;
+        $product->ImagePath = $dados['inputImagePath']->getClientOriginalName();
         $product->idRetailer = $request->selectRetailer;
         
         $product->save();
+        
+        if(isset($dados['inputImagePath'])){
+            //$nomeImagem = $dados['inputLogoPath']->getClientOriginalExtension();
+            
+            $image_path = public_path().'/imagens/productImages/'.$dados['inputImagePath']->getClientOriginalName();
+            //dd(File::delete($image_path));
+            if(File::exists($image_path)) {
+                File::delete($image_path);
+            }
+            
+            $dados['inputImagePath']->move(public_path('/imagens/productImages/'), $dados['inputImagePath']->getClientOriginalName());
+        }else{
+            echo 'Sem arquivo apontado';
+        }
         
         return redirect()->route('prod.index');
     }
@@ -87,14 +103,31 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $dados = $request->all();
+        
         $produtoEditar = product::find($id);
         $produtoEditar->Name = $request->inputName;
         $produtoEditar->Price = $request->inputPrice;
         $produtoEditar->Description = $request->inputDescription;        
         $produtoEditar->idRetailer = $request->selectRetailer;
-        $produtoEditar->ImagePath = $request->inputImagePath;
+        $produtoEditar->ImagePath = $dados['inputImagePath']->getClientOriginalName();
         
         $produtoEditar->save();
+        
+        if(isset($dados['inputImagePath'])){
+            //$nomeImagem = $dados['inputLogoPath']->getClientOriginalExtension();
+            
+            $image_path = public_path().'/imagens/productImages/'.$dados['inputImagePath']->getClientOriginalName();
+            //dd(File::delete($image_path));
+            if(File::exists($image_path)) {
+                File::delete($image_path);
+            }
+            
+            $dados['inputImagePath']->move(public_path('/imagens/productImages/'), $dados['inputImagePath']->getClientOriginalName());
+        }else{
+            echo 'Sem arquivo apontado';
+        }
+        
         return redirect()->route('prod.index');
     }
 

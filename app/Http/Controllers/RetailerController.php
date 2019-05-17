@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Models\retailers;
 
 class RetailerController extends Controller
@@ -38,13 +39,28 @@ class RetailerController extends Controller
     public function store(Request $request)
     {
         $retailer = new retailers;
+        $dados = $request->all();
         
         $retailer->Name = $request->inputName;
-        $retailer->LogoPath = $request->inputPrice;
+        $retailer->LogoPath = $dados['inputLogo']->getClientOriginalName();
         $retailer->Description = $request->inputDescription;
-        $retailer->Website = $request->inputImagePath;
+        $retailer->Website = $request->inputWebsite;
         
         $retailer->save();
+        
+        if(isset($dados['inputLogo'])){
+            //$nomeImagem = $dados['inputLogoPath']->getClientOriginalExtension();
+            
+            $image_path = public_path().'/imagens/retailersLogo/'.$retailer->id;
+            //dd(File::delete($image_path));
+            if(File::exists($image_path)) {
+                File::delete($image_path);
+            }
+            
+            $dados['inputLogo']->move(public_path('/imagens/retailersLogo/'), $dados['inputLogo']->getClientOriginalName());
+        }else{
+            echo 'Sem arquivo apontado';
+        }
         
         return redirect()->route('retail.index');
     }
