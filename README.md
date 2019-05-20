@@ -1,81 +1,55 @@
-# PHP skills test
+# CINQ Developer Test
+<p align="center"><img src="https://github.com/LuizNicolat/php-test/blob/luiz-nicolat/cinqLogo.png?raw=true"></p>
 
-## Objective
-The aim of this test is to evaluate the applicant skills on:
-- Basic backend concepts;
-- Database queries;
-- Data manipulation and treatment;
-- MVC concept for a back + front end application
-- API building concepts
-- Code structure and organization
+Complete CRUD for CINQ's developer test, containing basic usage for Product and Retailer, including all the API endpoints.
 
----
+# Follow the steps ahead to use the application
 
-## How to start and send us the test
-- Fork this repository
-- Create a branch with your name-surname as its name (e.i. john-doe)
-- Develop the test
-- Create a pull request to this repo on the master branch with your code.
+  - Access https://github.com/LuizNicolat/php-test, then clone or download the project
+  - If you've downloaded the project, extract it to your server specific folder, or if you are developing locally, extract it to the web folder of the server. Example: Laragon -> 'www' folder on laragon's root dir.
+  - Create a database named 'mvctest', and set the database user = 'root' and password = '123456'
+  - Open app folder, then make a copy of the 'env.example' file, then rename it to '.env'
+  - Open the .env file, and set the following parameters: DB_DATABASE=MVCtest, DB_USERNAME=root, DB_PASSWORD=123456
+  - Still in the app folder, open the terminal and hit the following command: composer dumpautoload, wait to finish
+  - Still in the terimanl, hit the following command: php artisan key:generate, wait to finish
+  - Still in the terimanl, hit the following command: php artisan migrate, wait to finish
+  - The application must be running now.
+  - If it doesn't, you have to check the .htaccess file in your server.
 
----
+### List of API endpoints
 
-## Basic Guidelines
-For this test you are developing a small e-commerce app. The app must have just a list of products. The products must display the following:
+Product API Endpoints
 
-- Name
-- Price
-- One Image
-- Retailer name
-- Description
+GET    - /api/product' - Return JSON list with all products
 
-Also, the user must be able to click on any retailer name, and filter the product list to show only the selected retailer's products alongside with the retailer's details. The retailer must have the following details:
-- Name
-- Logo (image)
-- Description
-- Website
+POST   - /api/product' - Store a new product via POST method
 
----
+GET    - /api/productdetail/{idproduto}' - return prodct details passing id via GET
 
-## Additional Guidelines
+PUT    - /api/product/{product}', - Update a product, passing a JSON object.
 
-The main ideia of this test is to understand how your logical thinkin works when deciding how to implement some generic requirements. Considering that, you may:
-- Use any framework you feel confortable with;
-- Use any database you feel confortable with;
+DELETE - /api/product/{product}' - Delete a product by passing the ID.
 
-Keep in mind that we may contact you to ask you some question about your test, regarding how and why you took a given decision when developing the app for this test.
+Retailer API Endpoints
 
----
+GET    - /api/retailer' - Return JSON list with all retailers
 
-## Basic Requirements
-The final app must have:
-- A product list view;
-- A single product view
-  - An e-mail input where user can insert his/her e-mail to get a given product details sent to his/her e-mail (the e-mail may not be actually sent, but it must be generated have the delivery simulated/mocked);
-- A retailer view
-  - Retailer's products and details
-- A Product create & edit view
-- A Retailer create & edit view
-- API endpoints that return JSONs for:
-  - Product list
-  - Product details
-  - Retailer details and products
-- API endpoints that:
-  - Create a new product
-  - Create a new retailer
-  - Edit a given product
-  - Edit a given retailer
+POST   - /api/retailer' - Store a new retailer via POST method
 
----
+GET    - /api/retailerDetail/{idproduto}' - return retailer details passing id via GET
 
-## Additional Requirements
-When you finish the test app, you must:
-- Provide a README.md with:
-  - Instructions how to make your app work with a database (schema name, ENV variables to set, username and password, etc.);
-  - The API endpoints and the application URL for the server-side rendered views;
-- Code a build command that will build your code and prepare a mock server to test it.
-- Push your code to a github repository and give [cinqtechnologies](https://github.com/cinqtechnologies/) access to it;
+PUT    - /api/retailer/{retailer}', - Update a retailer, passing a JSON object.
 
----
+DELETE - /api/retailer/{retailer}' - Delete a retailer, by using it's ID.
 
-## Pluses
-- Unit tests
+### Plugins
+
+The followig plugins were used to develop this application's models.
+
+| Plugin | README |
+| ------ | ------ |
+| Eloquent Model Generator | https://github.com/krlove/eloquent-model-generator |
+
+#### Framework
+The whole application was developed using the laravel framework, version 5.8.
+

@@ -1,0 +1,345 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>My Store</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/css/album.css" rel="stylesheet">
+  </head>
+<body>
+	<header>
+		<div class="collapse bg-dark" id="navbarHeader">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 col-md-7 py-4">
+						<h4 class="text-white">About</h4>
+						<p class="text-muted">We sell auto parts, check the entire site for more information.</p>
+					</div>
+					<div class="col-sm-4 offset-md-1 py-4">
+						<h4 class="text-white">Contact</h4>
+						<ul class="list-unstyled">
+							<li><a href="#" class="text-white">911-911-1119</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="navbar navbar-dark bg-dark shadow-sm">
+			<div class="container d-flex justify-content-between">
+				<a href="#" class="navbar-brand d-flex align-items-center">  <strong>My Store</strong>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarHeader" aria-controls="navbarHeader"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+		</div>
+	</header>
+
+	<main role="main">
+
+	<section class="jumbotron text-center">
+		<div class="container">
+			<h1 class="jumbotron-heading">Album example</h1>
+			<p class="lead text-muted">Something short and leading about the
+				collection below—its contents, the creator, etc. Make it short and
+				sweet, but not too short so folks don’t simply skip over it
+				entirely.</p>
+			<p>
+				<a href="#" class="btn btn-primary my-2">Main call to action</a> <a
+					href="#" class="btn btn-secondary my-2">Secondary action</a>
+			</p>
+		</div>
+	</section>
+
+	<div class="album py-5 bg-light">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card mb-4 shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%"
+							height="225" xmlns="http://www.w3.org/2000/svg"
+							preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+							aria-label="Placeholder: Thumbnail">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+						<div class="card-body">
+							<p class="card-text">This is a wider card with supporting text
+								below as a natural lead-in to additional content. This content
+								is a little bit longer.</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+								</div>
+								<small class="text-muted">9 mins</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card mb-4 shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%"
+							height="225" xmlns="http://www.w3.org/2000/svg"
+							preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+							aria-label="Placeholder: Thumbnail">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+						<div class="card-body">
+							<p class="card-text">This is a wider card with supporting text
+								below as a natural lead-in to additional content. This content
+								is a little bit longer.</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+								</div>
+								<small class="text-muted">9 mins</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card mb-4 shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%"
+							height="225" xmlns="http://www.w3.org/2000/svg"
+							preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+							aria-label="Placeholder: Thumbnail">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+						<div class="card-body">
+							<p class="card-text">This is a wider card with supporting text
+								below as a natural lead-in to additional content. This content
+								is a little bit longer.</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+								</div>
+								<small class="text-muted">9 mins</small>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="card mb-4 shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%"
+							height="225" xmlns="http://www.w3.org/2000/svg"
+							preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+							aria-label="Placeholder: Thumbnail">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+						<div class="card-body">
+							<p class="card-text">This is a wider card with supporting text
+								below as a natural lead-in to additional content. This content
+								is a little bit longer.</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+								</div>
+								<small class="text-muted">9 mins</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card mb-4 shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%"
+							height="225" xmlns="http://www.w3.org/2000/svg"
+							preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+							aria-label="Placeholder: Thumbnail">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+						<div class="card-body">
+							<p class="card-text">This is a wider card with supporting text
+								below as a natural lead-in to additional content. This content
+								is a little bit longer.</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+								</div>
+								<small class="text-muted">9 mins</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card mb-4 shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%"
+							height="225" xmlns="http://www.w3.org/2000/svg"
+							preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+							aria-label="Placeholder: Thumbnail">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+						<div class="card-body">
+							<p class="card-text">This is a wider card with supporting text
+								below as a natural lead-in to additional content. This content
+								is a little bit longer.</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+								</div>
+								<small class="text-muted">9 mins</small>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="card mb-4 shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%"
+							height="225" xmlns="http://www.w3.org/2000/svg"
+							preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+							aria-label="Placeholder: Thumbnail">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+						<div class="card-body">
+							<p class="card-text">This is a wider card with supporting text
+								below as a natural lead-in to additional content. This content
+								is a little bit longer.</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+								</div>
+								<small class="text-muted">9 mins</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card mb-4 shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%"
+							height="225" xmlns="http://www.w3.org/2000/svg"
+							preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+							aria-label="Placeholder: Thumbnail">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+						<div class="card-body">
+							<p class="card-text">This is a wider card with supporting text
+								below as a natural lead-in to additional content. This content
+								is a little bit longer.</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+								</div>
+								<small class="text-muted">9 mins</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card mb-4 shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%"
+							height="225" xmlns="http://www.w3.org/2000/svg"
+							preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+							aria-label="Placeholder: Thumbnail">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+						<div class="card-body">
+							<p class="card-text">This is a wider card with supporting text
+								below as a natural lead-in to additional content. This content
+								is a little bit longer.</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+								</div>
+								<small class="text-muted">9 mins</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</main>
+
+	<footer class="text-muted">
+		<div class="container">
+			<p class="float-right">
+				<a href="#">Back to top</a>
+			</p>
+			<p>Album example is &copy; Bootstrap, but please download and
+				customize it for yourself!</p>
+			<p>
+				New to Bootstrap? <a href="https://getbootstrap.com/">Visit the
+					homepage</a> or read our <a
+					href="/docs/4.3/getting-started/introduction/">getting started
+					guide</a>.
+			</p>
+		</div>
+	</footer>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="/sbAdmin/js/sb-admin.js" type="text/javascript"></script>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="/sbAdmin/vendor/jquery/jquery.min.js"></script>
+	<script src="/sbAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="/sbAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Page level plugin JavaScript-->
+	<script src="/sbAdmin/vendor/chart.js/Chart.min.js"></script>
+	<script src="/sbAdmin/vendor/datatables/jquery.dataTables.js"></script>
+	<script src="/sbAdmin/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="/sbAdmin/js/sb-admin.min.js"></script>
+
+	<!-- Demo scripts for this page-->
+	<script src="/sbAdmin/js/demo/datatables-demo.js"></script>
+	<script src="/sbAdmin/js/demo/chart-area-demo.js"></script>
+	
+	<!-- jquery.Mask-->
+	<script src="/js/jquery.mask.js"></script>
+	<script src="/js/masks.js"></script>
+</body>
+</html>
