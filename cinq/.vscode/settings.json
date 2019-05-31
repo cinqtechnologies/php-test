@@ -1,0 +1,4 @@
+{
+    "phpcs.autoConfigSearch": false,
+    "phpcs.enable": false
+}

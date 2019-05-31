@@ -79,3 +79,45 @@ When you finish the test app, you must:
 
 ## Pluses
 - Unit tests
+
+
+## Para rodar a aplicação
+
+Requisitos (Laravel 5.8)
+
+    - PHP >= 7.1.3
+    - OpenSSL PHP Extension
+    - PDO PHP Extension
+    - Mbstring PHP Extension
+    - Tokenizer PHP Extension
+    - XML PHP Extension
+    - Ctype PHP Extension
+    - JSON PHP Extension
+    - BCMath PHP Extension
+
+Copie a pasta cinq para o servidor
+Abra o arquivo .env (cinq/.env) e coloque os dados do seu banco de dados.
+(no env que eu subi eu coloquei de maneira simples, banco de dados, usuario e senha iguais; *cinq*)
+
+Rode as migrations
+ 	
+~~~~
+php artisan migrate
+~~~~
+
+Rode as seeds
+
+~~~~
+php artisan db:seed
+~~~~
+
+Use
+
+Anexos:
+
+API Endpoints
+
+- /api/products (Listar produtos)
+- /api/products/{id} (Exibir informações de um produto específico)
+- /api/retailer (Listar retailers)
+- /api/retailer/{id} (Exibir informações de um retailer específico)
