@@ -1,5 +1,8 @@
 <?php
 /*Products*/
+Route::get('/', function (){
+    return redirect('products');
+});
 Route::get('/products', "ProductsController@index")->name('products');
 Route::get('/product/{id}', "ProductsController@show")->name('product');
 Route::get('/product-new', "ProductsController@create")->name('product-new');
