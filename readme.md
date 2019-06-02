@@ -6,6 +6,7 @@ The following software must be installed:
 - Node.js
 - NPM
 - MySQL
+- PHP MySQL extension
 
 # How to install
 

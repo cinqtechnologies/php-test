@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 cp .env.example .env
-php artisan key:generate
 composer install
-npm install --global cross-env
+php artisan key:generate
 npm install
 npm run dev
