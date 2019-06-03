@@ -1,0 +1,41 @@
+// https://color.adobe.com/pt/create/color-wheel/?base=2&rule=Compound&selected=1&name=Meu%20tema%20do%20Color&mode=rgb&rgbvalues=0.21242647058823538,0.3125608478211364,0.9529411764705882,0.25514705882352945,0.26837104072401186,0.3529411764705882,0.24313725490196078,0.5803921568627451,0.7529411764705882,0.7838235294117647,0.5867097417958934,0.4490655637254902,0.9529411764705882,0.40891603506764074,0.21242647058823538&swatchOrder=0,1,2,3,4
+
+$color_text: #333;
+$color_primary: #3E94C0;
+$color_secondary: #F36836;
+$fontStack_body: Lato, Arial, san-serif;
+$fontStack_titulos: Georgia, Times, "Times New Roman", serif;
+
+// --------------------------------------- Responsividade -------------------------------------- //
+// $breakpoint-sm: 576px;
+// $breakpoint-md: 768px;
+// $breakpoint-lg: 992px;
+// $breakpoint-xl: 1200px;
+// $breakpoint-xxl: 1420px;
+
+@mixin media_sm {
+	@media (min-width: 576px) {
+		@content;
+	}
+}
+
+@mixin media_md {
+	@media (min-width: 768px) {
+		@content;
+	}
+}
+@mixin media_lg {
+	@media (min-width: 992px) {
+		@content;
+	}
+}
+@mixin media_xl {
+	@media (min-width: 1200px) {
+		@content;
+	}
+}
+@mixin media_xxl {
+	@media (min-width: 1420px) {
+		@content;
+	}
+}

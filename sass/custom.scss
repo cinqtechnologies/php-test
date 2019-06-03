@@ -1,0 +1,246 @@
+@charset "utf-8";
+@import 'variables';
+@import 'mixins';
+
+html {	
+	font-size: 16px;
+}
+
+body {
+	font-family: $fontStack_body;
+	color: $color_text;
+	background-color: #f9f9f9;
+}
+
+header {
+	// margin-top: -40px;
+	padding: 12px;
+	@include linear-gradient(180deg, 2, #f7f7f7 0%, #e9e9e9 100%);
+	background-image: url("../images/bg_molecula_5.png"), linear-gradient(180deg, #f7f7f7 0%, #e9e9e9 100%);
+	background-repeat: no-repeat, repeat;
+	background-size: auto 280px, cover;
+	background-position: 0 -120px, center;
+
+	.center {
+		img {
+			display: block;
+			width: 140px;
+			margin: 0 auto 12px;
+		}
+		
+		.search {
+			max-width: 400px;
+			margin: auto;
+			
+			input {
+				border-radius: 20px 0 0 20px;
+			}
+
+			button {
+				position: relative;
+				width: 35px;
+				border: 1px solid transparent;
+				border-radius: 0 20px 20px 0;
+				background: green;
+				@include linear-gradient(180deg, 2, #56a35e 0%, #237c86 100%);
+				overflow: hidden;
+				
+				svg {
+					position: absolute;
+					bottom: 2px;
+					right: 4px;
+					font-size: 1.6em;
+					color: white;
+				}
+			}
+		}
+	}
+}
+
+nav {
+	border-bottom: 1px solid #ccc;
+	background: white;
+	font-size: 0.9rem;
+	
+	a {
+		color: inherit;
+		text-transform: uppercase;
+		
+		&:hover {
+			color: #3E94C0;
+			text-decoration: none;
+		}
+	}
+	
+	.nav-link {
+		font-family: $fontStack_titulos;
+	}
+	
+	.nav-item.active {
+		> a {
+			color: #3E94C0;
+		}
+	}
+	
+	.navbar-toggler {
+		color: rgba(0, 0, 0, 0.5);
+		border-color: rgba(0, 0, 0, 0.1);
+	}
+	.navbar-toggler-icon {
+		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E")
+	}
+}
+
+#search_bar {
+	form {
+		max-width: 720px;
+		margin: auto;
+	}
+}
+
+footer {
+	width: 100%;
+	padding: 36px;
+	border-top: 1px solid #ccc;
+	background: white;
+	font-size: 0.9rem;
+	box-shadow: -5px 0px 5px rgba(0,0,0,.5);
+	
+	.logo {
+		width: 100px;
+	}
+	
+	> div > * {
+		display: inline-block;
+		vertical-align: top;
+		margin-right: 20px;
+	}
+}
+
+.icon-top {
+	position: fixed;
+	bottom: 5px;
+	right: 5px;
+	width: 30px;
+	height: 30px;
+	background: $color_primary;
+	text-align: center;
+	line-height: 32px;
+	color: white;
+	cursor: pointer;
+}
+
+.container {
+	@include media_xxl {
+		max-width: 1400px;
+	}
+}
+
+.section-title {
+	margin-bottom: 1rem;
+
+	h1 {
+		margin: 0;
+		white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+		font-size: 1.5rem;
+	}
+
+	.section-title-options {
+		float: right;
+		line-height: 2.5rem;
+	}
+}
+
+.box {
+	padding: 2rem;
+	border: 1px solid #ccc;
+	background: white;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: $fontStack_titulos;
+	margin: 0;
+}
+
+h1 {
+	font-size: 1.5rem;
+}
+h2 {
+	font-size: 1.4rem;
+}
+h3 {
+	font-size: 1.3rem;
+}
+h4 {
+	font-size: 1.2rem;
+}
+h5 {
+	font-size: 1rem;
+}
+
+form {
+	fieldset {
+		legend {
+			font-size: 1.2rem;
+			border-bottom: 1px solid #ddd;
+		}
+	}
+}
+
+input, button, textarea {
+	box-shadow: none!important;
+	outline: none;
+}
+
+.btn, .form-control {
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+}
+
+a, a:hover {
+	text-decoration: none;
+}
+
+.select2-container--bootstrap4 .select2-selection--multiple {
+	.select2-selection__rendered {
+		padding: 0.60rem .375rem 0 .75rem;
+	}
+
+	.select2-selection__choice {
+		padding: 3px 12px;
+		border-color: #f14d12;
+		background-color: $color_secondary;
+		color: white;
+		
+		span {
+			color: white;
+		}
+	}
+}
+
+
+// ------------------------------------------------------------------------------------------------
+// ----------------------------------------- Repositório ------------------------------------------
+// ------------------------------------------------------------------------------------------------
+.thumb {
+	width: 200px;
+	margin: 0 1rem 1rem;
+	margin-bottom: 1rem;
+	
+	a {
+		h3 {
+			color: $color_text;
+		}
+	}
+}
+
+.retailer-logo, .product-image {
+	width: 170px;
+	@include responsive-ratio(1, 1);
+	background-image: url(../images/no_image.png);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
