@@ -97,10 +97,10 @@ function update () {
 	if (!validate_post($entradas, $message))
 		trigger_error($message, E_USER_ERROR);
 
-	$_POST["logo"] = "";
-	if (isset($_FILES["image"])) {
-		if (!validate_post_files("image", $mesage))
-			trigger_error("Invalid parameter: Image. " . $message, E_USER_ERROR);
+	$_POST["image"] = "";
+	if (isset($_FILES["image"]) && is_uploaded_file($_FILES["image"]["tmp_name"])) {
+		if (!validate_post_files("image", $message))
+			trigger_error("Invalid parameter: Image. $message", E_USER_ERROR);
 
 		$file_path = "uploads/products/";
 		$file_type = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));

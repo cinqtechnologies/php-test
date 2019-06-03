@@ -93,8 +93,8 @@ function update () {
 		trigger_error($message, E_USER_ERROR);
 
 	$_POST["logo"] = "";
-	if (isset($_FILES["logo"])) {		
-		if (!validate_post_files("logo", $mesage))
+	if (isset($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
+		if (!validate_post_files("logo", $message))
 			trigger_error("Invalid parameter: Logo. " . $message, E_USER_ERROR);
 
 		$file_path = "uploads/retailers/";

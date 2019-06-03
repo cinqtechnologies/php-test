@@ -138,14 +138,13 @@ function validate_post_files ($name, &$message) {
 			
 		case UPLOAD_ERR_INI_SIZE:
 		case UPLOAD_ERR_FORM_SIZE:
-			$message = "File is too big.";
+			$message = "File is too big. Max file size: 2Mb.";
 			return false;
 			
 		default:
 			$message = "Couldn't save submited file.";
 			return false;
 	}
-	
 
 	// Verifica type do arquivo
 	$type = strtolower(pathinfo($_FILES[$name]["name"], PATHINFO_EXTENSION));
