@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\ProductController;
+use App\Controllers\RetailerController;
 
 $app->post('/product', ProductController::class . ':create');
 $app->get('/product', ProductController::class . ':retrieve');
