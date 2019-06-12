@@ -3,8 +3,9 @@ declare(strict_types=1);
 
 namespace App\RouteApi\Product;
 
+use App\Models\Product;
+use App\Models\SaveProduct;
 use App\RouteApi\RouteApi;
-use App\TicTacToe\Game;
 
 class ProductCreateApi extends RouteApi
 {
@@ -13,25 +14,16 @@ class ProductCreateApi extends RouteApi
      * @return mixed|void
      * @throws \Exception
      */
-    public function handle($params)
+    public function handle($params): void
     {
-        die("product create handle");
-        /*
-        $board = $params['boardState'];
-        $level = $params['level'];
+        $product = new Product($params['name'], $params['price'], $params['description'], $params['retailer_id'], null, $params['image']);
 
-        if ($level != 0 && $level != 1) {
-            throw new \Exception('Level should be between 0 and 1', 404);
+        if (! SaveProduct::execute($product)) {
+            throw new \Exception('Payment save error.');
         }
 
-        $game = new Game($level, 'X');
-        $game->makeCPUMove($board);
-
         $this->setPayload([
-            'lastCPUMove' => count($game->getLastCPUMove()) >  0 ? $game->getLastCPUMove() : null,
-            'gameStatus' => $game->getStatus(),
-            'boardState' => $game->getBoardState()
+            'message' => 'Product saved.'
         ]);
-        */
     }
 }

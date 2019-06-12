@@ -3,15 +3,18 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Core\Db\Connection;
+
 class SaveProduct extends ModelBase
 {
     /**
-     * @param SaveProduct $product
+     * @param Product $product
      * @return bool
      */
-    public static function execute(SaveProduct $product): bool
+    public static function execute(Product $product): bool
     {
-        $db = parent::getConnection();
+        //$db = self::getInstance();
+        //$db = Connection::getInstance();
 
         $query = "
             INSERT INTO products (
@@ -35,14 +38,14 @@ class SaveProduct extends ModelBase
                 description = :description, 
                 retailer_id = :retailer_id
         ";
-        $stmt = $db->prepare($query);
+        $stmt = self::prepare($query);
 
-        $stmt->bindValue(':name', $product->name);
-        $stmt->bindValue(':price', $product->price);
-        $stmt->bindValue(':description', $product->description);
-        $stmt->bindValue(':image', $product->image);
-        $stmt->bindValue(':retailer_id', $product->retailer_id);
-        $stmt->bindValue(':id', $product->id);
+        $stmt->bindValue(':name', $product->getName());
+        $stmt->bindValue(':price', $product->getPrice());
+        $stmt->bindValue(':description', $product->getDescription());
+        $stmt->bindValue(':image', $product->getImage());
+        $stmt->bindValue(':retailer_id', $product->getRetailerId());
+        $stmt->bindValue(':id', $product->getId());
 
         return $stmt->execute();
     }

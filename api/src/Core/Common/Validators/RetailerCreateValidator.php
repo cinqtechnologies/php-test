@@ -15,6 +15,6 @@ class RetailerCreateValidator extends ApiValidator
             'logo' => 'required',
             'description' => 'required',
             'website' => 'required'
-        ];
+               ];
     }
 }

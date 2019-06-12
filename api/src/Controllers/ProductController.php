@@ -5,7 +5,9 @@ namespace App\Controllers;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Validators\ProductCreateValidator;
+use App\Validators\ProductUpdateValidator;
 use App\RouteApi\Product\ProductCreateApi;
+use App\RouteApi\Product\ProductUpdateApi;
 
 class ProductController
 {
@@ -21,29 +23,67 @@ class ProductController
 
         $validator = new ProductCreateValidator();
         $errors = $validator->validate($params);
-
         if ($errors) {
             return $response->withJson($errors, 404);
         }
 
-        $productCreateApi = new ProductCreateApi();
-        $productCreateApi->handle($params);
+        $api = new ProductCreateApi();
+        $api->handle($params);
 
-        return $response->withJson($productCreateApi->getPayload());
+        return $response->withJson($api->getPayload());
     }
 
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return Response
+     * @throws \Exception
+     */
     public function update(Request $request, Response $response)
     {
-        die('product save');
+        $params = $request->getParsedBody();
+
+        $validator = new ProductUpdateValidator();
+        $errors = $validator->validate($params);
+        if ($errors) {
+            return $response->withJson($errors, 404);
+        }
+
+        $api = new ProductUpdateApi();
+        $api->handle($params);
+
+        return $response->withJson($api->getPayload());
     }
 
-    public function delete(Request $request, Response $response)
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param int $id
+     * @return Response
+     */
+    public function delete(Request $request, Response $response, int $id)
     {
-        die('product delete');
+        $params = $request->getParsedBody();
+
+        $api = new ProductDeleteApi($id);
+        $api->handle($params);
+
+        return $response->withJson($api->getPayload());
     }
 
-    public function retrieve(Request $request, Response $response)
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param int|null $id
+     * @return Response
+     */
+    public function retrieve(Request $request, Response $response, int $id = null)
     {
-        die('product retrieve');
+        $params = $request->getParsedBody();
+
+        $api = new ProductRetrieveApi($id);
+        $api->handle($params);
+
+        return $response->withJson($api->getPayload());
     }
 }

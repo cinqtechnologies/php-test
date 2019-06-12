@@ -18,7 +18,7 @@ class Connection
      */
     private function __construct()
     {
-        $hostName = sprintf("mysql:host=%s;dbname=%s", $this->hostAddress, $this->hostname);
+        $hostName = sprintf("mysql:host=%s;dbname=%s", $this->hostAddress, $this->hostName);
 
         $this->conn = new \PDO(
             $hostName,

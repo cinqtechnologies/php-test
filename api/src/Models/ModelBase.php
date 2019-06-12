@@ -10,8 +10,8 @@ abstract class ModelBase extends Connection
     /**
      * ModelBase constructor.
      */
-    public function __construct()
+    public static function prepare($query)
     {
-        parent::getInstance();
+        return self::getInstance()->getConnection()->prepare($query);
     }
 }
