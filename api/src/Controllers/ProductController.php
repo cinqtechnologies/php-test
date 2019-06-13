@@ -2,12 +2,16 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
+
 use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Validators\ProductCreateValidator;
 use App\Validators\ProductUpdateValidator;
+use App\Validators\ProductDeleteValidator;
 use App\RouteApi\Product\ProductCreateApi;
 use App\RouteApi\Product\ProductUpdateApi;
+use App\RouteApi\Product\ProductRetrieveApi;
+use App\RouteApi\Product\ProductDeleteApi;
 
 class ProductController
 {
@@ -58,15 +62,20 @@ class ProductController
     /**
      * @param Request $request
      * @param Response $response
-     * @param int $id
+     * @param array $parameters
      * @return Response
+     * @throws \Exception
      */
-    public function delete(Request $request, Response $response, int $id)
+    public function delete(Request $request, Response $response, array $parameters)
     {
-        $params = $request->getParsedBody();
+        $validator = new ProductDeleteValidator();
+        $errors = $validator->validate($parameters);
+        if ($errors) {
+            return $response->withJson($errors, 404);
+        }
 
-        $api = new ProductDeleteApi($id);
-        $api->handle($params);
+        $api = new ProductDeleteApi();
+        $api->handle($parameters);
 
         return $response->withJson($api->getPayload());
     }
@@ -74,15 +83,14 @@ class ProductController
     /**
      * @param Request $request
      * @param Response $response
-     * @param int|null $id
+     * @param array $parameters
      * @return Response
+     * @throws \Exception
      */
-    public function retrieve(Request $request, Response $response, int $id = null)
+    public function retrieve(Request $request, Response $response, array $parameters)
     {
-        $params = $request->getParsedBody();
-
-        $api = new ProductRetrieveApi($id);
-        $api->handle($params);
+        $api = new ProductRetrieveApi();
+        $api->handle($parameters);
 
         return $response->withJson($api->getPayload());
     }

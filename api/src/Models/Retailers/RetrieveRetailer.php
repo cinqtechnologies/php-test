@@ -6,22 +6,22 @@ namespace App\Models;
 class RetrieveProduct extends ModelBase
 {
     /**
-     * @param int|null $productId
+     * @param int|null $id
      * @return bool
      */
-    public static function execute(?int $productId)
+    public static function execute(?int $id)
     {
-        if (!is_null($productId)) {
-            $query = "SELECT * FROM products WHERE id = :id";
+        if (!is_null($id)) {
+            $query = "SELECT * FROM retailers WHERE id = :id";
             $stmt = self::prepare($query);
-            $stmt->bindValue(':id', $productId);
+            $stmt->bindValue(':id', $id);
         } else {
-            $query = "SELECT * FROM products";
+            $query = "SELECT * FROM retailers";
             $stmt = self::prepare($query);
         }
         $stmt->execute();
 
-        if (!is_null($productId)) {
+        if (!is_null($id)) {
              return $stmt->fetch(\PDO::FETCH_ASSOC);
         } else {
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);

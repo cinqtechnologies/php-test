@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Validators;
 
-class RetailerCreateValidator extends ApiValidator
+class RetailerDeleteValidator extends ApiValidator
 {
     /**
      * @return array
@@ -11,9 +11,7 @@ class RetailerCreateValidator extends ApiValidator
     protected function rules(): array
     {
         return [
-            'logo' => 'required',
-            'website' => 'required',
-            'description' => 'required'
+            'id' => 'required|integer'
         ];
     }
 }

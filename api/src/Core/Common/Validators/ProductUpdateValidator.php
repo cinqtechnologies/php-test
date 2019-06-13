@@ -11,11 +11,9 @@ class ProductUpdateValidator extends ApiValidator
     protected function rules(): array
     {
         return [
-            'id' => 'required|integer',
-            'name' => 'required',
-            'price' => 'required|numeric',
-            'retailer_id' => 'required|integer',
-            'description' => 'required'
+            'id' => 'integer',
+            'price' => 'numeric',
+            'retailer_id' => 'integer'
         ];
     }
 }
