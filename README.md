@@ -15,6 +15,8 @@ docker build . -t tuxmate/php:testing
 
 # After that, we can run the following command to configure all we need to start using the project.
 make configure
+
+# That command will populate the datbase with predefined data in order to test the API. It populates the database by using a PHP dependency called Phynx.
 ```
 
 ## Runing The Unit Tests
@@ -24,6 +26,8 @@ make test
 ```
 
 > A few tests are failing, unfortunately the challenge time is running out :(
+
+> In order to check all the available commands you can run the command `make help`.
 
 ## Available Ports
 
