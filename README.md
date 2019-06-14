@@ -28,7 +28,7 @@ Usuário | Senha
 ------- | ----------
 root    | admin
 
-# Screenshots
+## Screenshots
 
 ### Retailer List
 ![Retailer List](https://github.com/diogocavilha/php-test/blob/diogocavilha/public/assets/screenshots/retailer-list.png)
@@ -40,4 +40,7 @@ root    | admin
 ![Retailer Details and Products](https://github.com/diogocavilha/php-test/blob/diogocavilha/public/assets/screenshots/retailer-details-and-products.png)
 
 ### Product Entry
-![Product Entry](https://github.com/diogocavilha/php-test/blob/diogocavilha/public/assets/screenshots/product-details.png)
+![Product Entry](https://github.com/diogocavilha/php-test/blob/diogocavilha/public/assets/screenshots/product-entry.png)
+
+### Product Details
+![Product Details](https://github.com/diogocavilha/php-test/blob/diogocavilha/public/assets/screenshots/product-details.png)
