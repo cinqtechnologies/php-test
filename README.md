@@ -11,8 +11,15 @@ docker build . -t tuxmate/php:testing
 
 # After that, we can run the following command to configure all we need to start using the project.
 make configure
- # command...
 ```
+
+## Runing The Unit Tests
+```bash
+cd phptest/
+make test
+```
+
+> A few tests are failing, unfortunately the challenge time is running out :(
 
 ## Available Ports
 
