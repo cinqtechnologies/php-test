@@ -27,3 +27,17 @@ Porta  | Aplicação
 Usuário | Senha
 ------- | ----------
 root    | admin
+
+# Screenshots
+
+### Retailer List
+![Retailer List](https://github.com/diogocavilha/php-test/blob/diogocavilha/public/assets/screenshots/retailer-list.png)
+
+### Retailer Entry
+![Retailer Entry](https://github.com/diogocavilha/php-test/blob/diogocavilha/public/assets/screenshots/retailer-entry.png)
+
+### Retailer Details and Products
+![Retailer Details and Products](https://github.com/diogocavilha/php-test/blob/diogocavilha/public/assets/screenshots/retailer-details-and-products.png)
+
+### Product Entry
+![Product Entry](https://github.com/diogocavilha/php-test/blob/diogocavilha/public/assets/screenshots/product-details.png)
