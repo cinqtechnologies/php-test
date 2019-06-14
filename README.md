@@ -6,7 +6,7 @@ You can find the API documentation at [diogocavilha.github.io/php-test](https://
 
 ## Setting Up The Project
 ```bash
-git clone git@github.com:diogocavilha/php-test.git phptest -b diogocavilha
+git clone https://github.com/diogocavilha/php-test.git phptest -b diogocavilha
 cd phptest/
 
 # The whole project was built over a docker environment.
