@@ -16,7 +16,8 @@ docker build . -t tuxmate/php:testing
 # After that, we can run the following command to configure all we need to start using the project.
 make configure
 
-# That command will populate the database with predefined data in order to test the API. It populates the database by using a PHP dependency called Phynx.
+# That command will populate the database with predefined data in order to test the API. 
+# It populates the database by using a PHP dependency called Phinx.
 ```
 
 ## Runing The Unit Tests
