@@ -2,7 +2,7 @@
 
 ## Setting up
 ```bash
-git clone git@github.com:diogocavilha/php-test.git phptest
+git clone git@github.com:diogocavilha/php-test.git phptest -b diogocavilha
 cd phptest/
 
 # The whole project was built over a docker environment.
