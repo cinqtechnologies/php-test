@@ -2,7 +2,7 @@
 
 ## API Doc
 
-You can find the whole API documentation under the `docs/` directory. You just need to open the `docs/index.html` on your browser.
+You can find the API documentation at [diogocavilha.github.io/php-test](https://diogocavilha.github.io/php-test/)
 
 ## Setting Up The Project
 ```bash
@@ -16,7 +16,7 @@ docker build . -t tuxmate/php:testing
 # After that, we can run the following command to configure all we need to start using the project.
 make configure
 
-# That command will populate the datbase with predefined data in order to test the API. It populates the database by using a PHP dependency called Phynx.
+# That command will populate the database with predefined data in order to test the API. It populates the database by using a PHP dependency called Phynx.
 ```
 
 ## Runing The Unit Tests
