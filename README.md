@@ -1,6 +1,10 @@
 # CINQ Backend PHP Test
 
-## Setting up
+## API Doc
+
+You can find the whole API documentation under the `docs/` directory. You just need to open the `docs/index.html` on your browser.
+
+## Setting Up The Project
 ```bash
 git clone git@github.com:diogocavilha/php-test.git phptest -b diogocavilha
 cd phptest/
