@@ -1,0 +1,6 @@
+vendor/
+db_data/
+logs/
+coverage-html
+*.sublime-project
+*.sublime-workspace
