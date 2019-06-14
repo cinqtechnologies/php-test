@@ -1,5 +1,5 @@
 vendor/
-data/
+db_data/
 logs/
 coverage-html
 *.sublime-project
