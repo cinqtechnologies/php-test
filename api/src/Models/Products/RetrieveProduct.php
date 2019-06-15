@@ -22,7 +22,7 @@ class RetrieveProduct extends ModelBase
         $stmt->execute();
 
         if (!is_null($productId)) {
-             return $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
         } else {
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         }

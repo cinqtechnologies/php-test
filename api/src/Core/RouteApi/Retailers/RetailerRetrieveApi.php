@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\RouteApi\Product;
+namespace App\RouteApi\Retailer;
 
 use App\RouteApi\RouteApi;
-use App\Models\RetrieveProduct;
+use App\Models\RetrieveRetailer;
 
-class ProductRetrieveApi extends RouteApi
+class RetailerRetrieveApi extends RouteApi
 {
     /**
      * @param array|mixed[] $params
@@ -15,10 +15,10 @@ class ProductRetrieveApi extends RouteApi
     public function handle($params): void
     {
         $id = isset($params['id']) ? intval($params['id']) : null;
-        $data = RetrieveProduct::execute($id);
+        $data = RetrieveRetailer::execute($id);
 
         $this->setPayload([
-            'message' => count($data) > 0 ? 'Product retrieved' : 'Product not found',
+            'message' => $data !== false ? 'Retailer retrieved' : 'Retailer not found',
             'data' => $data
         ]);
     }

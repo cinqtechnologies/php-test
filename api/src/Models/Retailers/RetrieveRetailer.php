@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class RetrieveProduct extends ModelBase
+class RetrieveRetailer extends ModelBase
 {
     /**
      * @param int|null $id
@@ -22,7 +22,7 @@ class RetrieveProduct extends ModelBase
         $stmt->execute();
 
         if (!is_null($id)) {
-             return $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
         } else {
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         }
