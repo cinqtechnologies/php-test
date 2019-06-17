@@ -15,12 +15,14 @@ class Retailer
      * @param string $logo
      * @param string $description
      * @param string $website
+     * @param int|null $id
      */
-    public function __construct(string $logo, string $description, string $website)
+    public function __construct(string $logo, string $description, string $website, ?int $id = null)
     {
         $this->logo = $logo;
         $this->website = $website;
         $this->description = $description;
+        $this->id = $id;
     }
 
     /**

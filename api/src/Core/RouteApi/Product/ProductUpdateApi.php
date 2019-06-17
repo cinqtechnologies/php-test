@@ -19,7 +19,7 @@ class ProductUpdateApi extends RouteApi
         $product = new Product($params['name'], $params['price'], $params['description'], $params['retailer_id'], $params['id'], $params['image']);
 
         if (!SaveProduct::execute($product)) {
-            throw new \Exception('Payment update error.');
+            throw new \Exception('Product update error.');
         }
 
         $this->setPayload([

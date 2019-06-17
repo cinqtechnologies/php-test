@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\RouteApi\Product;
+namespace App\RouteApi\Retailer;
 
 use App\Models\Retailer;
 use App\Models\SaveRetailer;

@@ -12,8 +12,8 @@ class SaveRetailer extends ModelBase
     public static function execute(Retailer $retailer): bool
     {
         $query = "
-            INSERT INTO products (
-                id,, 
+            INSERT INTO retailers (
+                id,
                 description,
                 logo,
                 website

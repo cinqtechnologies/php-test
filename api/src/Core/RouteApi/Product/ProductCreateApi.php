@@ -16,10 +16,10 @@ class ProductCreateApi extends RouteApi
      */
     public function handle($params): void
     {
-        $product = new Product($params['name'], $params['price'], $params['description'], $params['retailer_id'], null, $params['image']);
+        $product = new Product($params['name'], floatVal($params['price']), $params['description'], intVal($params['retailer_id']), null, $params['image']);
 
         if (! SaveProduct::execute($product)) {
-            throw new \Exception('Payment save error.');
+            throw new \Exception('Product save error.');
         }
 
         $this->setPayload([

@@ -13,9 +13,6 @@ class SaveProduct extends ModelBase
      */
     public static function execute(Product $product): bool
     {
-        //$db = self::getInstance();
-        //$db = Connection::getInstance();
-
         $query = "
             INSERT INTO products (
                 id, 
