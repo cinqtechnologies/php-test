@@ -1,81 +1,107 @@
-# PHP skills test
+# PHP Simple E-commerce Api
 
 ## Objective
-The aim of this test is to evaluate the applicant skills on:
-- Basic backend concepts;
-- Database queries;
-- Data manipulation and treatment;
-- MVC concept for a back + front end application
-- API building concepts
-- Code structure and organization
+Simple Api developed in PHP Slim Framework. 
 
----
-
-## How to start and send us the test
-- Fork this repository
-- Create a branch with your name-surname as its name (e.i. john-doe)
-- Develop the test
-- Create a pull request to this repo on the master branch with your code.
-
----
+## Postman Collection
+In the postman we have interactive examples
+[Postman Collection Api](https://www.getpostman.com/collections/111dc85bdea3844d61ad)
 
 ## Basic Guidelines
-For this test you are developing a small e-commerce app. The app must have just a list of products. The products must display the following:
+### Database
+MySQL database used to this project
+```sql
+-- --------------------------------------------------------
+-- Servidor:                     127.0.0.1
+-- Versão do servidor:           5.7.24 - MySQL Community Server (GPL)
+-- OS do Servidor:               Win64
+-- HeidiSQL Versão:              10.1.0.5464
+-- --------------------------------------------------------
 
-- Name
-- Price
-- One Image
-- Retailer name
-- Description
+-- Create E-Commerce Database
+CREATE DATABASE IF NOT EXISTS `ecommerce` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ecommerce`;
 
-Also, the user must be able to click on any retailer name, and filter the product list to show only the selected retailer's products alongside with the retailer's details. The retailer must have the following details:
-- Name
-- Logo (image)
-- Description
-- Website
+-- Create Products table
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `retailer_id` int(11) NOT NULL DEFAULT '0',
+  `name` varchar(63) NOT NULL DEFAULT '0',
+  `price` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `image` text NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_products_retailers` (`retailer_id`),
+  CONSTRAINT `FK_products_retailers` FOREIGN KEY (`retailer_id`) REFERENCES `retailers` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
----
+-- Create Retailers table
+CREATE TABLE IF NOT EXISTS `retailers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `logo` text NOT NULL,
+  `description` text NOT NULL,
+  `website` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
 
-## Additional Guidelines
+### Environment
+#### Required tools
+* LAMP or WAMP
+* PHP 7.2 or upper
+* Composer
+* Postman
 
-The main ideia of this test is to understand how your logical thinkin works when deciding how to implement some generic requirements. Considering that, you may:
-- Use any framework you feel confortable with;
-- Use any database you feel confortable with;
+Clone the project into the valid `LAMP` directory and run `composer install` command.
+After this the project will be accessible in `localhost/php-test/api/public`.
 
-Keep in mind that we may contact you to ask you some question about your test, regarding how and why you took a given decision when developing the app for this test.
+#### Endpoints
+The Header content type needs be `application/json`
+The available endpoints are:
+##### Products
+###### GET /api/public/product/{OPTIONAL id}
+Get all products, with an optional valid Id to get only one.
 
----
+###### POST /api/public/product
+Create a new product. 
+###### Body Requirements
+* name: String. REQUIRED
+* price: Float. REQUIRED
+* retailer_id: Integer. REQUIRED
+* description: String. Required
+* image: Base64 String. REQUIRED
 
-## Basic Requirements
-The final app must have:
-- A product list view;
-- A single product view
-  - An e-mail input where user can insert his/her e-mail to get a given product details sent to his/her e-mail (the e-mail may not be actually sent, but it must be generated have the delivery simulated/mocked);
-- A retailer view
-  - Retailer's products and details
-- A Product create & edit view
-- A Retailer create & edit view
-- API endpoints that return JSONs for:
-  - Product list
-  - Product details
-  - Retailer details and products
-- API endpoints that:
-  - Create a new product
-  - Create a new retailer
-  - Edit a given product
-  - Edit a given retailer
+###### PATCH /api/public/product
+Update an existing product. 
+###### Body Requirements:
+* id: Integer. REQUIRED,
+* name: String. REQUIRED,
+* price: Float. REQUIRED,
+* retailer_id: Integer. REQUIRED,
+* description: Description. REQUIRED,
+* image": Base64 String. REQUIRED
 
----
+###### DELETE /api/public/product/{REQUIRED id}
+Exclude the product, with a required valid id
 
-## Additional Requirements
-When you finish the test app, you must:
-- Provide a README.md with:
-  - Instructions how to make your app work with a database (schema name, ENV variables to set, username and password, etc.);
-  - The API endpoints and the application URL for the server-side rendered views;
-- Code a build command that will build your code and prepare a mock server to test it.
-- Push your code to a github repository and give [cinqtechnologies](https://github.com/cinqtechnologies/) access to it;
+##### Retailers
+###### GET /api/public/retailer/{OPTIONAL id}
+Get all retailers, with an optional valid Id to get only one.
 
----
+###### POST /api/public/retailer
+Create a new retailer. 
+###### Body Requirements
+* description: String. REQUIRED
+* website: String. Required
+* logo: Base64 String. REQUIRED
 
-## Pluses
-- Unit tests
+###### PATCH /api/public/retailer
+Update an existing retailer. 
+###### Body Requirements:
+* id: Integer. REQUIRED,
+* description: String. REQUIRED
+* website: String. Required
+* logo: Base64 String. REQUIRED
+
+###### DELETE /api/public/retailer/{REQUIRED id}
+Exclude the retailer, with a required valid id
